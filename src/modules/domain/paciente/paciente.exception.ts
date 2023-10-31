@@ -28,7 +28,7 @@ class TelefoneInvalido extends DomainException{
   }
 }
 
-export const PacienteExceptions = {
+export const Exceptions = {
   NomeInvalido,
   CPFinvalido,
   IdadeInvalida,

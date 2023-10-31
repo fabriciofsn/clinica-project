@@ -1,4 +1,4 @@
-import { PacienteExceptions } from "./paciente.exception";
+import { Exceptions } from "./paciente.exception";
 import { IEndereco, IPaciente } from "./paciente.interface";
 
 export class Paciente implements IPaciente{
@@ -17,10 +17,10 @@ export class Paciente implements IPaciente{
   }
   private set nome(nome: string) {
     if(nome.length < Paciente.TAMANHO_MINIMO_NOME){
-      throw new PacienteExceptions.NomeInvalido();
+      throw new Exceptions.NomeInvalido();
     }
     if(nome.length > Paciente.TAMANHO_MAXIMO_NOME){
-      throw new PacienteExceptions.NomeInvalido();
+      throw new Exceptions.NomeInvalido();
     }
     this._nome = nome;
   }
@@ -48,7 +48,7 @@ export class Paciente implements IPaciente{
   }
   private set idade(idade: number) {
     if(idade < 0){
-      throw new PacienteExceptions.IdadeInvalida();
+      throw new Exceptions.IdadeInvalida();
     }
     this._idade = idade;
   }
@@ -59,7 +59,7 @@ export class Paciente implements IPaciente{
   private set telefone(telefone: string) {
     const regexp: RegExp = /^\d{2}\-?\d{4}\-?\d{4}$/;
     if(!regexp.test(telefone)){
-      throw new PacienteExceptions.TelefoneInvalido();
+      throw new Exceptions.TelefoneInvalido();
     }
     this._telefone = telefone;
   }
