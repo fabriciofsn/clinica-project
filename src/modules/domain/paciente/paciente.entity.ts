@@ -9,8 +9,8 @@ export class Paciente implements IPaciente{
   private _telefone: string;
   
 
-  public static TAMANHO_MINIMO_NOME = 3;
-  public static TAMANHO_MAXIMO_NOME = 40;
+  public static readonly TAMANHO_MINIMO_NOME = 3;
+  public static readonly TAMANHO_MAXIMO_NOME = 40;
 
   public get nome(): string {
     return this._nome;
