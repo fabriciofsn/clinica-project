@@ -1,0 +1,20 @@
+{
+  "name": "clinica-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:console": "node -r tsconfig-paths/register -r sucrase/register src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ts-node-dev": "^2.0.0"
+  },
+  "devDependencies": {
+    "sucrase": "^3.34.0",
+    "tsconfig-paths": "^4.2.0"
+  }
+}
