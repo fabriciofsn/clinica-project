@@ -1,6 +1,6 @@
 import { IEndereco } from "../paciente/paciente.interface";
 
-export enum StutusMedico {
+export enum StatusMedico {
   ATIVO = 'ATIVO',
   INATIVO = 'INATIVO',
   AFASTADO = 'AFASTADO',
@@ -14,5 +14,5 @@ export interface IMedico {
   CRM: string;
   endereco: IEndereco;
   telefone: string;
-  status: StutusMedico;
+  status: StatusMedico;
 }

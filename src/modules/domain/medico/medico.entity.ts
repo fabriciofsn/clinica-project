@@ -1,5 +1,5 @@
 import { IEndereco } from "../paciente/paciente.interface";
-import { IMedico, StutusMedico } from "./medico.interface";
+import { IMedico, StatusMedico } from "./medico.interface";
 import {Exceptions} from '../paciente/paciente.exception';
 import { CRMinvalido } from "./medico.exception";
 
@@ -9,7 +9,7 @@ export class Medico implements IMedico{
   private _CRM: string; 
   private _endereco: IEndereco;
   private _telefone: string;
-  private _status: StutusMedico;
+  private _status: StatusMedico;
  
 
   public static readonly TAMANHO_MINIMO_NOME = 3;
@@ -63,10 +63,10 @@ export class Medico implements IMedico{
     this._telefone = telefone;
   }
 
-   public get status(): StutusMedico {
+  public get status(): StatusMedico {
     return this._status;
   }
-  private set status(value: StutusMedico) {
+  private set status(value: StatusMedico) {
     this._status = value;
   }
 
@@ -77,7 +77,6 @@ export class Medico implements IMedico{
     this.telefone = dados.telefone;
     this.endereco = dados.endereco;
   }
-
 
   public static createNewMedico(dados: IMedico): Medico{
     return new Medico(dados);
