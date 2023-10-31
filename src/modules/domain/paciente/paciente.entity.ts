@@ -1,3 +1,4 @@
+import { PacienteExceptions } from "./paciente.exception";
 import { IEndereco, IPaciente } from "./paciente.interface";
 
 export class Paciente implements IPaciente{
@@ -8,10 +9,19 @@ export class Paciente implements IPaciente{
   private _telefone: string;
   
 
+  public static TAMANHO_MINIMO_NOME = 3;
+  public static TAMANHO_MAXIMO_NOME = 40;
+
   public get nome(): string {
     return this._nome;
   }
   private set nome(nome: string) {
+    if(nome.length < Paciente.TAMANHO_MINIMO_NOME){
+      throw new PacienteExceptions.NomeInvalido();
+    }
+    if(nome.length > Paciente.TAMANHO_MAXIMO_NOME){
+      throw new PacienteExceptions.NomeInvalido();
+    }
     this._nome = nome;
   }
 
@@ -29,8 +39,8 @@ export class Paciente implements IPaciente{
   public get endereco(): IEndereco {
     return this._endereco;
   }
-  private set endereco(value: IEndereco) {
-    this._endereco = value;
+  private set endereco(endereco: IEndereco) {
+    this._endereco = endereco;
   }
 
   public get idade(): number {
@@ -38,7 +48,7 @@ export class Paciente implements IPaciente{
   }
   private set idade(idade: number) {
     if(idade < 0){
-      throw Error();
+      throw new PacienteExceptions.IdadeInvalida();
     }
     this._idade = idade;
   }
@@ -49,7 +59,7 @@ export class Paciente implements IPaciente{
   private set telefone(telefone: string) {
     const regexp: RegExp = /^\d{2}\-?\d{4}\-?\d{4}$/;
     if(!regexp.test(telefone)){
-      throw Error();
+      throw new PacienteExceptions.TelefoneInvalido();
     }
     this._telefone = telefone;
   }
