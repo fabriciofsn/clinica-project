@@ -1,7 +1,7 @@
 import { databaseConnection } from "./modules/database/database.connection";
 import { Paciente } from "./modules/domain/paciente/paciente.entity";
 import { IEndereco, IPaciente } from "./modules/domain/paciente/paciente.interface";
-import { medicoDB, pacienteDB } from "./modules/database/schema";
+import { medicoDB, pacienteDB,consultaDB } from "./modules/database/schema";
 
 const endereco: IEndereco = {
   estado: 'sergipe',cidade:'tobias', rua: 'Rua A',
@@ -36,4 +36,4 @@ const novoPaciente = new pacienteDB({
 })
 
 
-novoPaciente.save().then(() => console.log('Paciente saldo no banco'));
+// novoPaciente.save().then(() => console.log('Paciente saldo no banco'));
