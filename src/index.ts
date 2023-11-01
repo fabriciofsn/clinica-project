@@ -9,11 +9,11 @@ const endereco: IEndereco = {
 }
 
 const pessoa: IPaciente = {
-  nome: 'XIBETO',
-  CPF: '00000000000',
+  nome: 'Rian',
+  CPF: '99999999999',
   endereco,
-  idade: 99,
-  telefone: '79999999999'
+  idade: 18,
+  telefone: '79888888888'
 }
 
 const paciente = Paciente.createNewPaciente(pessoa);

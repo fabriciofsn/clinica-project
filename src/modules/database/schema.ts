@@ -5,6 +5,7 @@ const medicoSchema = new Schema({
   id: {type: String, required: true},
   nome: {type: String, required: true},
   CRM: {type: String, required: true},
+  especialidade: { type: String },
   endereco: [{
     estado: {type: String, required: true},
     cidade: {type: String, required: true},
