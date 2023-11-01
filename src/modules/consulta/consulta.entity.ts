@@ -1,6 +1,7 @@
 import { Entity } from "../../shared/entity/entity";
 import { Medico } from "../domain/medico/medico.entity";
 import { Paciente } from "../domain/paciente/paciente.entity";
+import { consultaExceptions } from "./consulta.exception";
 import { IConsulta } from "./consulta.interface";
 import { paymentMethod, paymentStatus, statusConsulta } from "./consulta.interface";
 
@@ -39,6 +40,9 @@ export class Consulta extends Entity<Consulta> implements IConsulta{
     return this._valor;
   }
   private set valor(valor: number) {
+    if(valor < 0){
+      throw new consultaExceptions.ValorInválido();
+    }
     this._valor = valor;
   }
 
