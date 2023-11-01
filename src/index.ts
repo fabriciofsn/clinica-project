@@ -1,3 +1,4 @@
+import { databaseConnection } from "./modules/database/database.connection";
 import { Paciente } from "./modules/domain/paciente/paciente.entity";
 import { IEndereco, IPaciente } from "./modules/domain/paciente/paciente.interface";
 
@@ -16,3 +17,5 @@ const pessoa: IPaciente = {
 
 const paciente = Paciente.createNewPaciente(pessoa);
 console.log(paciente);
+
+databaseConnection();
