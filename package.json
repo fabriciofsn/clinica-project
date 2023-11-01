@@ -14,7 +14,6 @@
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
-    "prisma": "^5.5.2",
     "sucrase": "^3.34.0",
     "tsconfig-paths": "^4.2.0"
   }

@@ -9,6 +9,7 @@ export enum StatusMedico {
 }
 
 export interface IMedico {
+  id?: string;
   nome: string;
   idade: number;
   CRM: string;

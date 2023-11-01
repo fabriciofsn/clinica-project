@@ -2,8 +2,9 @@ import { IEndereco } from "../paciente/paciente.interface";
 import { IMedico, StatusMedico } from "./medico.interface";
 import {Exceptions} from '../paciente/paciente.exception';
 import { CRMinvalido } from "./medico.exception";
+import { Entity } from "../../../shared/entity/entity";
 
-export class Medico implements IMedico{
+export class Medico extends Entity<Medico> implements IMedico{
   private _nome: string;
   private _idade: number;
   private _CRM: string; 
@@ -71,6 +72,7 @@ export class Medico implements IMedico{
   }
 
   private constructor(dados: IMedico){
+    super(dados.id);
     this.nome = dados.nome;
     this.CRM = dados.CRM;
     this.idade = dados.idade;

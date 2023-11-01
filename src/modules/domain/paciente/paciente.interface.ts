@@ -8,6 +8,7 @@ export interface IEndereco{
 }
 
 export interface IPaciente{
+  id?: string;
   nome: string;
   CPF: string;
   endereco: IEndereco;

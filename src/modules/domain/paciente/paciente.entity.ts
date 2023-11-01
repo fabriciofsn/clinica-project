@@ -1,7 +1,8 @@
+import { Entity } from "../../../shared/entity/entity";
 import { Exceptions } from "./paciente.exception";
 import { IEndereco, IPaciente } from "./paciente.interface";
 
-export class Paciente implements IPaciente{
+export class Paciente  extends Entity<Paciente> implements IPaciente{
   private _nome: string;
   private _CPF: string;
   private _endereco: IEndereco;  
@@ -57,7 +58,7 @@ export class Paciente implements IPaciente{
     return this._telefone;
   }
   private set telefone(telefone: string) {
-    const regexp: RegExp = /^\d{2}\-?\d{4}\-?\d{4}$/;
+    const regexp: RegExp = /^[0-9]{11}$/;;
     if(!regexp.test(telefone)){
       throw new Exceptions.TelefoneInvalido();
     }
@@ -65,6 +66,7 @@ export class Paciente implements IPaciente{
   }
 
   private constructor(dados: IPaciente){
+    super(dados.id);
     this.nome = dados.nome;
     this.CPF = dados.CPF;
     this.endereco = dados.endereco;
