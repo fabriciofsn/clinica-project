@@ -18,22 +18,22 @@ const pessoa: IPaciente = {
 
 const paciente = Paciente.createNewPaciente(pessoa);
 databaseConnection();
-const novoPaciente = new pacienteDB({
-  id: paciente.id,
-  nome: paciente.nome,
-  CPF: paciente.CPF,
-  idade: paciente.idade,
-  endereco: [{
-    estado: paciente.endereco.estado,
-    cidade: paciente.endereco.cidade,
-    rua: paciente.endereco.rua,
-    cep: paciente.endereco.cep,
-    bairro: paciente.endereco.bairro,
-    numero: paciente.endereco.numero,
+// const novoPaciente = new pacienteDB({
+//   id: paciente.id,
+//   nome: paciente.nome,
+//   CPF: paciente.CPF,
+//   idade: paciente.idade,
+//   endereco: [{
+//     estado: paciente.endereco.estado,
+//     cidade: paciente.endereco.cidade,
+//     rua: paciente.endereco.rua,
+//     cep: paciente.endereco.cep,
+//     bairro: paciente.endereco.bairro,
+//     numero: paciente.endereco.numero,
 
-  }],
-  telefone: paciente.telefone
-})
+//   }],
+//   telefone: paciente.telefone
+// })
 
 
 // novoPaciente.save().then(() => console.log('Paciente saldo no banco'));

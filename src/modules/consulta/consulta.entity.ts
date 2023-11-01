@@ -67,7 +67,7 @@ export class Consulta extends Entity<Consulta> implements IConsulta{
     this._statusConsulta = statusConsulta;
   }
 
-  constructor(dados: IConsulta){
+  private constructor(dados: IConsulta){
     super(dados.id);
     this.paciente = dados.paciente;
     this.medico = dados.medico;
