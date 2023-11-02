@@ -13,6 +13,7 @@ export interface IMedico {
   nome: string;
   idade: number;
   CRM: string;
+  especialidade: string;
   endereco: IEndereco;
   telefone: string;
   status: StatusMedico;

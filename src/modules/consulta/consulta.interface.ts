@@ -14,7 +14,7 @@ export enum paymentMethod {
 }
 
 export enum statusConsulta {
-  ATIVA = 'ATIVA',
+  AGENDADA = 'AGENDADA',
   CANCELADA = 'CANCELADA'
 }
 

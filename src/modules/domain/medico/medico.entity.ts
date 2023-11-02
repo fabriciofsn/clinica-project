@@ -11,7 +11,7 @@ export class Medico extends Entity<Medico> implements IMedico{
   private _endereco: IEndereco;
   private _telefone: string;
   private _status: StatusMedico;
- 
+  private _especialidade: string;
 
   public static readonly TAMANHO_MINIMO_NOME = 3;
   public static readonly TAMANHO_MAXIMO_NOME = 40;
@@ -71,6 +71,13 @@ export class Medico extends Entity<Medico> implements IMedico{
     this._status = value;
   }
 
+  public get especialidade(): string {
+    return this._especialidade;
+  }
+  private set especialidade(value: string) {
+    this._especialidade = value;
+  }
+
   private constructor(dados: IMedico){
     super(dados.id);
     this.nome = dados.nome;
@@ -78,7 +85,9 @@ export class Medico extends Entity<Medico> implements IMedico{
     this.idade = dados.idade;
     this.telefone = dados.telefone;
     this.endereco = dados.endereco;
+    this.especialidade = dados.especialidade;
   }
+  
 
   public static createNewMedico(dados: IMedico): Medico{
     return new Medico(dados);

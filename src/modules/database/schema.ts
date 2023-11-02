@@ -3,6 +3,8 @@ import { Schema } from "mongoose";
 import { Paciente } from "../domain/paciente/paciente.entity";
 import { Medico } from "../domain/medico/medico.entity";
 import { paymentMethod, paymentStatus, statusConsulta } from "../consulta/consulta.interface";
+import { StatusMedico } from "../domain/medico/medico.interface";
+
 
 const medicoSchema = new Schema({
   id: {type: String, required: true},
@@ -18,6 +20,7 @@ const medicoSchema = new Schema({
     numero: {type: String, required: true} 
   }],
   idade: {type: Number, required: true},
+  status: {type: String, enum: StatusMedico, required: true},
   telefone: {type: String, required: true}
 })
 
@@ -40,13 +43,13 @@ const pacienteSchema = new Schema({
 
 const consultaSchema = new Schema({
   id: {type: String, require: true},
-  paciente: {type: Paciente, required: true},
-  medico: {type: Medico, required: true},
+  paciente: {type: mongoose.Schema.ObjectId, ref: 'Paciente', required: true},
+  medico: {type: mongoose.Schema.ObjectId, ref: 'Medico', required: true},
   data: {type: Date, required: true},
   valor: {type: Number, required: true},
-  status_do_pagamento: {type: paymentStatus, required: true},
-  metodo_de_pagamento: {type: paymentMethod, required: true},
-  status_da_consulta: {type: statusConsulta, required: true},
+  status_do_pagamento: {type: String, enum: paymentStatus, required: true},
+  metodo_de_pagamento: {type: String, enum: paymentMethod, required: true},
+  status_da_consulta: {type: String, enum: statusConsulta, required: true},
   data_de_exclusao: {type: Date, required: false}
 })
 
