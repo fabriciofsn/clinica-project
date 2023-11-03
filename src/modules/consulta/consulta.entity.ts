@@ -1,4 +1,4 @@
-import { Entity } from "../../shared/entity/entity";
+import { Entity } from "@shared/entity/entity";
 import { IMedico } from "../domain/medico/medico.interface";
 import { IPaciente } from "../domain/paciente/paciente.interface";
 import { consultaExceptions } from "./consulta.exception";

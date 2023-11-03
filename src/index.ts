@@ -16,7 +16,7 @@ const endereco: IEndereco = {
 }
 
 const pessoa: IPaciente = {
-  nome: 'Rian',
+  nome: 'Rian Souza de Goias',
   CPF: '99999999999',
   endereco,
   idade: 18,
@@ -43,20 +43,21 @@ const novoPaciente = new pacienteDB({
 })
 
 const enderecoMedico: IEndereco = {
-  estado: 'Flórida',cidade:'Orlando', rua: 'street C',
+  estado: 'Albânia',cidade:'Shkoder', rua: 'street C',
   cep: '85479-9090',bairro: 'centro', numero: '224'
 }
 
 const medico: IMedico = {
-  nome: 'Steve',
-  idade: 85,
-  CRM: '125476/US',
-  especialidade: 'Cirurgião',
+  nome: 'Patolino Sheldon',
+  idade: 35,
+  CRM: '058457/US',
+  especialidade: 'Dentista',
   endereco: enderecoMedico,
-  telefone: '7998585547',
+  telefone: '79988888888',
   status: StatusMedico.ATIVO
 }
 
+// novoPaciente.save().then(() => console.log('Paciente Cadastrado'));
 const novoMedico: Medico = Medico.createNewMedico(medico);
 
 const medicoOnSave = new medicoDB({
@@ -81,12 +82,14 @@ const medicoOnSave = new medicoDB({
 
 async function findPaciente() {
   const pacienteRecuperado = await pacienteDB.findOne({
-    id: 'e6a39303-9979-4eb0-b966-1a0b1f26c8c5'
+    id: 'f7eac60a-9349-45b8-88c9-63c513589ef3'
   });
   const medicoRecuperado = await medicoDB.findOne({
-    id: 'e8778770-034f-4621-8b05-e5ebe10f4ddc'
+    id: '42f39f3b-bb3c-4a4b-b247-9d35042fa037'
   });
  
+  const medicos = await pacienteDB.find();
+  console.log(medicos)
   if(pacienteRecuperado && medicoRecuperado){
     const paciente: IPaciente = {
       id: pacienteRecuperado.id,
@@ -139,9 +142,9 @@ async function findPaciente() {
 
     const consultaSave = new consultaDB({
       id: marcarConsulta.id,
-      paciente: marcarConsulta.paciente.id,
+      id_paciente: marcarConsulta.paciente.id,
       nome_paciente: marcarConsulta.paciente.nome,
-      medico: marcarConsulta.medico.id,
+      id_medico: marcarConsulta.medico.id,
       nome_medico: marcarConsulta.medico.nome,
       data: marcarConsulta.data,
       valor: marcarConsulta.valor,
@@ -150,7 +153,7 @@ async function findPaciente() {
       metodo_de_pagamento: marcarConsulta.paymentMethod,
     })
 
-    consultaSave.save().then(() => console.log('Consulta Agendada!'));
+    // consultaSave.save().then(() => console.log('Consulta Agendada!'));
   }
 }
 findPaciente();

@@ -1,5 +1,6 @@
-import { IPaciente } from "../../modules/domain/paciente/paciente.interface";
-import { Paciente } from "../../modules/domain/paciente/paciente.entity";
+import { IPaciente } from "@modules/domain/paciente/paciente.interface";
+import { Paciente } from "@modules/domain/paciente/paciente.entity";
+
 
 export class PacienteMap {
   public static toDomain(paciente: Paciente): IPaciente{

@@ -1,4 +1,4 @@
-import { DomainException } from "../../../shared/exception/domain.exception";
+import { DomainException } from "@shared/exception/domain.exception";
 
 class MedicoException extends DomainException{
   constructor(message: string = 'Exceção Médico'){

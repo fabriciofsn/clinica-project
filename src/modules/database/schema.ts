@@ -43,9 +43,9 @@ const pacienteSchema = new Schema({
 
 const consultaSchema = new Schema({
   id: { type: String, required: true },
-  paciente: { type: mongoose.Schema.Types.String, ref: 'Paciente', required: true },
+  id_paciente: { type: mongoose.Schema.Types.String, ref: 'Paciente', required: true },
   nome_paciente: {type: mongoose.Schema.Types.String, required: true},
-  medico: { type: mongoose.Schema.Types.String, ref: 'Medico', required: true },
+  id_medico: { type: mongoose.Schema.Types.String, ref: 'Medico', required: true },
   nome_medico: {type: mongoose.Schema.Types.String, required: true},
   data: { type: Date, required: true },
   valor: { type: Number, required: true },

@@ -2,7 +2,7 @@ import { IEndereco } from "../paciente/paciente.interface";
 import { IMedico, StatusMedico } from "./medico.interface";
 import {Exceptions} from '../paciente/paciente.exception';
 import { CRMinvalido } from "./medico.exception";
-import { Entity } from "../../../shared/entity/entity";
+import { Entity } from "@shared/entity/entity";
 
 export class Medico extends Entity<Medico> implements IMedico{
   private _nome: string;

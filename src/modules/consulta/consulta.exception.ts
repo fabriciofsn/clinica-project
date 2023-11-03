@@ -1,4 +1,4 @@
-import { DomainException } from "../../shared/exception/domain.exception";
+import { DomainException } from "@shared/exception/domain.exception";
 
 class ErrorDomainConsulta extends DomainException{
   constructor(message: string = 'Error consulta'){
