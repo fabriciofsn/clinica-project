@@ -1,13 +1,12 @@
 import { Entity } from "../../shared/entity/entity";
-import { Medico } from "../domain/medico/medico.entity";
-import { Paciente } from "../domain/paciente/paciente.entity";
+import { IMedico } from "../domain/medico/medico.interface";
+import { IPaciente } from "../domain/paciente/paciente.interface";
 import { consultaExceptions } from "./consulta.exception";
-import { IConsulta } from "./consulta.interface";
-import { paymentMethod, paymentStatus, statusConsulta } from "./consulta.interface";
+import { IConsulta, paymentMethod, paymentStatus, statusConsulta } from "./consulta.interface";
 
 export class Consulta extends Entity<Consulta> implements IConsulta{
-  private _paciente: Paciente;
-  private _medico: Medico;
+  private _paciente: IPaciente;
+  private _medico: IMedico;
   private _data: Date;
   private _valor: number;
   private _paymentStatus: paymentStatus;
@@ -15,17 +14,17 @@ export class Consulta extends Entity<Consulta> implements IConsulta{
   private _statusConsulta: statusConsulta;
   
   
-  public get paciente(): Paciente {
+  public get paciente(): IPaciente {
     return this._paciente;
   }
-  private set paciente(paciente: Paciente) {
+  private set paciente(paciente: IPaciente) {
     this._paciente = paciente;
   }
 
-  public get medico(): Medico {
+  public get medico(): IMedico {
     return this._medico;
   }
-  private set medico(medico: Medico) {
+  private set medico(medico: IMedico) {
     this._medico = medico;
   }
 

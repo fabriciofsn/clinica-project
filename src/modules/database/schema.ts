@@ -42,16 +42,18 @@ const pacienteSchema = new Schema({
 })
 
 const consultaSchema = new Schema({
-  id: {type: String, require: true},
-  paciente: {type: mongoose.Schema.ObjectId, ref: 'Paciente', required: true},
-  medico: {type: mongoose.Schema.ObjectId, ref: 'Medico', required: true},
-  data: {type: Date, required: true},
-  valor: {type: Number, required: true},
-  status_do_pagamento: {type: String, enum: paymentStatus, required: true},
-  metodo_de_pagamento: {type: String, enum: paymentMethod, required: true},
-  status_da_consulta: {type: String, enum: statusConsulta, required: true},
-  data_de_exclusao: {type: Date, required: false}
-})
+  id: { type: String, required: true },
+  paciente: { type: mongoose.Schema.Types.String, ref: 'Paciente', required: true },
+  nome_paciente: {type: mongoose.Schema.Types.String, required: true},
+  medico: { type: mongoose.Schema.Types.String, ref: 'Medico', required: true },
+  nome_medico: {type: mongoose.Schema.Types.String, required: true},
+  data: { type: Date, required: true },
+  valor: { type: Number, required: true },
+  status_do_pagamento: { type: String, enum: paymentStatus, required: true },
+  metodo_de_pagamento: { type: String, enum: paymentMethod, required: true },
+  status_da_consulta: { type: String, enum: statusConsulta, required: true },
+  data_de_exclusao: { type: Date, required: false }
+});
 
 export const consultaDB = mongoose.model('consultas', consultaSchema);
 export const medicoDB = mongoose.model('medicos', medicoSchema);

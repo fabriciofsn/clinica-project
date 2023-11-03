@@ -1,5 +1,7 @@
 import { Medico } from "../domain/medico/medico.entity";
+import { IMedico } from "../domain/medico/medico.interface";
 import { Paciente } from "../domain/paciente/paciente.entity";
+import { IPaciente } from "../domain/paciente/paciente.interface";
 
 export enum paymentStatus {
   CONFIRMADO = 'CONFIRMADO',
@@ -20,8 +22,8 @@ export enum statusConsulta {
 
 export interface IConsulta {
   id?: string;
-  paciente: Paciente;
-  medico: Medico;
+  paciente: IPaciente;
+  medico: IMedico;
   data: Date;
   valor: number;
   paymentStatus: paymentStatus;
