@@ -8,6 +8,7 @@ import { IConsulta, paymentMethod, paymentStatus, statusConsulta } from "./modul
 import { Consulta } from "./modules/consulta/consulta.entity";
 import { PacienteMap } from "./shared/mappers/paciente.map";
 import { MedicoMap } from "./shared/mappers/medico.map";
+import { PacienteRepository } from "@modules/infra/paciente/paciente.repo";
 
 
 const endereco: IEndereco = {
