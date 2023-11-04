@@ -5,9 +5,31 @@ import { IPaciente } from "@modules/domain/paciente/paciente.interface";
 
 export class PacienteRepository implements IRespository<Paciente>{
 
-  recoverByID(UUID: string): Promise<Paciente | null> {
-    throw new Error("Method not implemented.");
+  async recoverByID(UUID: string): Promise<Paciente | null> {
+    const paciente = await pacienteDB.findById({id:UUID});
+    if(paciente){
+    const fromMongoToObject: IPaciente = {
+      id: paciente.id,
+      nome: paciente.nome,
+      CPF: paciente.CPF,
+      endereco: {
+        estado: paciente.endereco[0].estado,
+        cidade: paciente.endereco[0].cidade,
+        cep: paciente.endereco[0].cep,
+        rua: paciente.endereco[0].rua,
+        bairro: paciente.endereco[0].bairro,
+        numero: paciente.endereco[0].numero
+      },
+      idade: paciente.idade,
+      telefone: paciente.telefone
+      } 
+
+    return Paciente.createNewPaciente(fromMongoToObject);  
+    }
+    return null;
   }
+
+
   async recoverAll(): Promise<Paciente[]> {
     const pacientesDB = await pacienteDB.find();
     
@@ -36,7 +58,7 @@ export class PacienteRepository implements IRespository<Paciente>{
   insert(entity: Paciente): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
-  update(UUID: string, entity: Paciente): Promise<boolean> {
+  update(UUID: string, entity: Partial<Paciente>): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
   delete(UUID: string): Promise<boolean> {
