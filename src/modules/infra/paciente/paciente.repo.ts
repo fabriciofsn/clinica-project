@@ -64,13 +64,13 @@ export class PacienteRepository implements IRespository<Paciente>{
   }
   async update(UUID: string, paciente: Partial<Paciente>): Promise<boolean> {
     const pacienteUpdate = await pacienteDB.findOneAndUpdate({id: UUID},paciente);
-    
+
     if(pacienteUpdate) return true;
     return false;
   }
   async delete(UUID: string): Promise<boolean> {
-    const softDelete = await pacienteDB.deleteOne({id: UUID});
-    if(softDelete) return true;
+    const deleteRow = await pacienteDB.deleteOne({id: UUID});
+    if(deleteRow) return true;
     return false;
   }
 
