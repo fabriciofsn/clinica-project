@@ -65,8 +65,10 @@ export class PacienteRepository implements IRespository<Paciente>{
   update(UUID: string, paciente: Partial<Paciente>): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
-  delete(UUID: string): Promise<boolean> {
-    throw new Error("Method not implemented.");
+  async delete(UUID: string): Promise<boolean> {
+    const softDelete = await pacienteDB.deleteOne({id: UUID});
+    if(softDelete) return true;
+    return false;
   }
 
 }
