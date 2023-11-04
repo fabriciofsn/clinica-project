@@ -10,7 +10,7 @@ const medicoSchema = new Schema({
   id: {type: String, required: true},
   nome: {type: String, required: true},
   CRM: {type: String, required: true},
-  especialidade: { type: String },
+  especialidade: { type: String, required: true },
   endereco: [{
     estado: {type: String, required: true},
     cidade: {type: String, required: true},
@@ -20,7 +20,7 @@ const medicoSchema = new Schema({
     numero: {type: String, required: true} 
   }],
   idade: {type: Number, required: true},
-  status: {type: String, enum: StatusMedico, required: true},
+  status: {type: String, enum: Object.values(StatusMedico), required: true},
   telefone: {type: String, required: true}
 })
 
