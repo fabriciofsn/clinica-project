@@ -52,8 +52,10 @@ export class PacienteRepository implements IRespository<Paciente>{
       return Paciente.createNewPaciente(fromMongoToObject);
     })
   }
-  exist(UUID: string): Promise<boolean> {
-    throw new Error("Method not implemented.");
+  async exist(UUID: string): Promise<boolean> {
+    const paciente = await pacienteDB.findById({id:UUID});
+    if(paciente) return true;
+    return false;
   }
   insert(entity: Paciente): Promise<boolean> {
     throw new Error("Method not implemented.");
