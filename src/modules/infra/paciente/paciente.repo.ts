@@ -57,10 +57,12 @@ export class PacienteRepository implements IRespository<Paciente>{
     if(paciente) return true;
     return false;
   }
-  insert(entity: Paciente): Promise<boolean> {
-    throw new Error("Method not implemented.");
+  async insert(paciente: Paciente): Promise<boolean> {
+    const insertPaciente = await pacienteDB.create(paciente);
+    if(insertPaciente) return true;
+    return false;
   }
-  update(UUID: string, entity: Partial<Paciente>): Promise<boolean> {
+  update(UUID: string, paciente: Partial<Paciente>): Promise<boolean> {
     throw new Error("Method not implemented.");
   }
   delete(UUID: string): Promise<boolean> {
