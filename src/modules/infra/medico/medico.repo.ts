@@ -72,6 +72,7 @@ export class MedicoRepository implements IRespository<Medico>{
   }
   async delete(UUID: string): Promise<boolean> {
     const deleteMedico = await medicoDB.deleteOne({id: UUID});
+    
     if(deleteMedico) return true;
     return false;
   }

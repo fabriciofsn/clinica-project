@@ -17,8 +17,8 @@ const endereco: IEndereco = {
 }
 
 const pessoa: IPaciente = {
-  nome: 'Rian Souza de Goias',
-  CPF: '99999999999',
+  nome: 'Rian Souza de Gois',
+  CPF: '70243512544',
   endereco,
   idade: 18,
   telefone: '79888888888'
@@ -82,79 +82,91 @@ const medicoOnSave = new medicoDB({
 // medicoOnSave.save().then(() => console.log('Médico saldo no banco'));
 
 async function findPaciente() {
-  const pacienteRecuperado = await pacienteDB.findOne({
-    id: 'f7eac60a-9349-45b8-88c9-63c513589ef3'
-  });
-  const medicoRecuperado = await medicoDB.findOne({
-    id: '42f39f3b-bb3c-4a4b-b247-9d35042fa037'
-  });
+  // const pacienteRecuperado = await pacienteDB.findOne({
+  //   id: 'f7eac60a-9349-45b8-88c9-63c513589ef3'
+  // });
+  // const medicoRecuperado = await medicoDB.findOne({
+  //   id: '42f39f3b-bb3c-4a4b-b247-9d35042fa037'
+  // });
  
-  const medicos = await pacienteDB.find();
-  console.log(medicos)
-  if(pacienteRecuperado && medicoRecuperado){
-    const paciente: IPaciente = {
-      id: pacienteRecuperado.id,
-      nome: pacienteRecuperado.nome,
-      CPF: pacienteRecuperado.CPF,
-      endereco: {
-        estado: pacienteRecuperado.endereco[0].estado,
-        cidade: pacienteRecuperado.endereco[0].cidade,
-        rua: pacienteRecuperado.endereco[0].rua,
-        bairro: pacienteRecuperado.endereco[0].bairro,
-        cep: pacienteRecuperado.endereco[0].cep,
-        numero: pacienteRecuperado.endereco[0].numero
-      },
-      idade: pacienteRecuperado.idade,
-      telefone: pacienteRecuperado.telefone
-    }
+  // const medicos = await pacienteDB.find();
+  // if(pacienteRecuperado && medicoRecuperado){
+  //   const paciente: IPaciente = {
+  //     id: pacienteRecuperado.id,
+  //     nome: pacienteRecuperado.nome,
+  //     CPF: pacienteRecuperado.CPF,
+  //     endereco: {
+  //       estado: pacienteRecuperado.endereco[0].estado,
+  //       cidade: pacienteRecuperado.endereco[0].cidade,
+  //       rua: pacienteRecuperado.endereco[0].rua,
+  //       bairro: pacienteRecuperado.endereco[0].bairro,
+  //       cep: pacienteRecuperado.endereco[0].cep,
+  //       numero: pacienteRecuperado.endereco[0].numero
+  //     },
+  //     idade: pacienteRecuperado.idade,
+  //     telefone: pacienteRecuperado.telefone
+  //   }
 
-    const medico: IMedico = {
-      id: medicoRecuperado.id,
-      nome: medicoRecuperado.nome,
-      CRM: medicoRecuperado.CRM,
-      endereco: {
-        estado: medicoRecuperado.endereco[0].estado,
-        cidade: medicoRecuperado.endereco[0].cidade,
-        rua: medicoRecuperado.endereco[0].rua,
-        bairro: medicoRecuperado.endereco[0].bairro,
-        cep: medicoRecuperado.endereco[0].cep,
-        numero: medicoRecuperado.endereco[0].numero
-      },
-      idade: medicoRecuperado.idade,
-      especialidade: 'Pedriata',
-      telefone: medicoRecuperado.telefone,
-      status: StatusMedico.ATIVO
-    }
+  //   const medico: IMedico = {
+  //     id: medicoRecuperado.id,
+  //     nome: medicoRecuperado.nome,
+  //     CRM: medicoRecuperado.CRM,
+  //     endereco: {
+  //       estado: medicoRecuperado.endereco[0].estado,
+  //       cidade: medicoRecuperado.endereco[0].cidade,
+  //       rua: medicoRecuperado.endereco[0].rua,
+  //       bairro: medicoRecuperado.endereco[0].bairro,
+  //       cep: medicoRecuperado.endereco[0].cep,
+  //       numero: medicoRecuperado.endereco[0].numero
+  //     },
+  //     idade: medicoRecuperado.idade,
+  //     especialidade: 'Pedriata',
+  //     telefone: medicoRecuperado.telefone,
+  //     status: StatusMedico.ATIVO
+  //   }
 
-    const pacienteCriado = Paciente.createNewPaciente(paciente);
-    const medicoCriado = Medico.createNewMedico(medico);
+  //   const pacienteCriado = Paciente.createNewPaciente(paciente);
+  //   const medicoCriado = Medico.createNewMedico(medico);
     
-    const consulta: IConsulta = {
-      paciente: PacienteMap.toDomain(pacienteCriado),
-      medico: MedicoMap.toDomain(medicoCriado),
-      data: new Date(),
-      valor: 250.00,
-      paymentStatus: paymentStatus.CONFIRMADO,
-      paymentMethod: paymentMethod.CARTÃO_DE_CREDITO,
-      statusConsulta: statusConsulta.AGENDADA
-    }
+  //   const consulta: IConsulta = {
+  //     paciente: PacienteMap.toDomain(pacienteCriado),
+  //     medico: MedicoMap.toDomain(medicoCriado),
+  //     data: new Date(),
+  //     valor: 250.00,
+  //     paymentStatus: paymentStatus.CONFIRMADO,
+  //     paymentMethod: paymentMethod.CARTÃO_DE_CREDITO,
+  //     statusConsulta: statusConsulta.AGENDADA
+  //   }
 
-    const marcarConsulta = Consulta.marcarConsulta(consulta);
+  //   const marcarConsulta = Consulta.marcarConsulta(consulta);
 
-    const consultaSave = new consultaDB({
-      id: marcarConsulta.id,
-      id_paciente: marcarConsulta.paciente.id,
-      nome_paciente: marcarConsulta.paciente.nome,
-      id_medico: marcarConsulta.medico.id,
-      nome_medico: marcarConsulta.medico.nome,
-      data: marcarConsulta.data,
-      valor: marcarConsulta.valor,
-      status_do_pagamento: marcarConsulta.paymentStatus,
-      status_da_consulta: marcarConsulta.statusConsulta,
-      metodo_de_pagamento: marcarConsulta.paymentMethod,
-    })
+  //   const consultaSave = new consultaDB({
+  //     id: marcarConsulta.id,
+  //     id_paciente: marcarConsulta.paciente.id,
+  //     nome_paciente: marcarConsulta.paciente.nome,
+  //     id_medico: marcarConsulta.medico.id,
+  //     nome_medico: marcarConsulta.medico.nome,
+  //     data: marcarConsulta.data,
+  //     valor: marcarConsulta.valor,
+  //     status_do_pagamento: marcarConsulta.paymentStatus,
+  //     status_da_consulta: marcarConsulta.statusConsulta,
+  //     metodo_de_pagamento: marcarConsulta.paymentMethod,
+  //   })
 
     // consultaSave.save().then(() => console.log('Consulta Agendada!'));
-  }
+      const pessoaUpdate: IPaciente = {
+      nome: 'Rian Marteiro de Marta',
+      CPF: '70243512544',
+      endereco,
+      idade: 18,
+      telefone: '79000000000'
 }
+    const pacienteUpdate = Paciente.createNewPaciente(pessoaUpdate); 
+
+    const atualizar = await new PacienteRepository()
+    .update('792433d1-daae-4e12-a59a-1a7b1b2269ea', PacienteMap.toDomain(pacienteUpdate));
+    console.log(atualizar);
+   
+  }
+
 findPaciente();

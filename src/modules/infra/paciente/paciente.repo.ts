@@ -62,8 +62,8 @@ export class PacienteRepository implements IRespository<Paciente>{
     if(insertPaciente) return true;
     return false;
   }
-  async update(UUID: string, paciente: Partial<Paciente>): Promise<boolean> {
-    const pacienteUpdate = await pacienteDB.findOneAndUpdate({id: UUID},paciente);
+  async update(UUID: string, paciente: IPaciente): Promise<boolean> {
+    const pacienteUpdate = await pacienteDB.updateOne({id: UUID},paciente);
 
     if(pacienteUpdate) return true;
     return false;
