@@ -9,6 +9,7 @@ import { Consulta } from "./modules/consulta/consulta.entity";
 import { PacienteMap } from "./shared/mappers/paciente.map";
 import { MedicoMap } from "./shared/mappers/medico.map";
 import { PacienteRepository } from "@modules/infra/paciente/paciente.repo";
+import mongoose from "mongoose";
 
 
 const endereco: IEndereco = {
@@ -154,12 +155,13 @@ async function findPaciente() {
   //   })
 
     // consultaSave.save().then(() => console.log('Consulta Agendada!'));
+   
       const pessoaUpdate: IPaciente = {
       nome: 'Rian Marteiro de Marta',
       CPF: '70243512544',
       endereco,
       idade: 18,
-      telefone: '79000000000'
+      telefone: '79000000009'
 }
     const pacienteUpdate = Paciente.createNewPaciente(pessoaUpdate); 
 

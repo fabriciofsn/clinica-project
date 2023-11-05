@@ -4,7 +4,7 @@ import { IMedico } from "../../modules/domain/medico/medico.interface";
 export class MedicoMap {
   public static toDomain(medico: Medico): IMedico{
     return {
-      id: medico.id,
+      // id: medico.id,
       nome: medico.nome,
       CRM: medico.CRM,
       idade: medico.idade,
