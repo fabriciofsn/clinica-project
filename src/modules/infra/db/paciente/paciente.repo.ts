@@ -1,6 +1,6 @@
 import { IRespository } from "@shared/repository/interfacce.repo";
-import { pacienteDB } from "../../database/schema";
-import { Paciente } from "../../domain/paciente/paciente.entity";
+import { pacienteDB } from "../../../database/schema";
+import { Paciente } from "../../../domain/paciente/paciente.entity";
 import { IPaciente } from "@modules/domain/paciente/paciente.interface";
 
 export class PacienteRepository implements IRespository<Paciente>{

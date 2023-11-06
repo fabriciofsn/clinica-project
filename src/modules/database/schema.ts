@@ -43,10 +43,38 @@ const pacienteSchema = new Schema({
 
 const consultaSchema = new Schema({
   id: { type: String, required: true },
-  id_paciente: { type: mongoose.Schema.Types.String, ref: 'Paciente', required: true },
-  nome_paciente: {type: mongoose.Schema.Types.String, required: true},
-  id_medico: { type: mongoose.Schema.Types.String, ref: 'Medico', required: true },
-  nome_medico: {type: mongoose.Schema.Types.String, required: true},
+  paciente:{
+    id: {type: String, required: true},
+    nome: {type: String, required: true},
+    idade: {type: Number, required: true},
+    CPF: {type: String, required: true},
+    endereco:{
+      estado: {type: String, required: true},
+      cidade: {type: String, required: true},
+      cep: {type: String, required: true},
+      bairro: {type: String, required: true},
+      rua: {type: String, required: true},
+      numero: {type: String, required: true}
+    },
+    telefone: {type: String, required: true}
+  },
+  medico: {
+    id: {type: String, required: true},
+    nome: {type: String, required: true},
+    idade: {type: Number, required: true},
+    CRM: {type: String, required: true},
+    endereco:{
+      estado: {type: String, required: true},
+      cidade: {type: String, required: true},
+      cep: {type: String, required: true},
+      bairro: {type: String, required: true},
+      rua: {type: String, required: true},
+      numero: {type: String, required: true}
+    },
+    especialidade: {type: String, required: true},
+    status: {type: String, enum: StatusMedico, required: true},
+    telefone: {type: String, required: true}
+  },
   data: { type: Date, required: true },
   valor: { type: Number, required: true },
   status_do_pagamento: { type: String, enum: paymentStatus, required: true },

@@ -1,8 +1,11 @@
 import { Consulta } from "@modules/consulta/consulta.entity";
+import { IConsulta } from "@modules/consulta/consulta.interface";
+import { consultaDB } from "@modules/database/schema";
 import { IRespository } from "@shared/repository/interfacce.repo";
 
 export class ConsultaRepository implements IRespository<Consulta>{
-  recoverByID(UUID: string): Promise<Consulta | null> {
+  async recoverByID(UUID: string): Promise<Consulta | null> {
+    const consultaRecuperada = await consultaDB.findOne({id: UUID});
     throw new Error("Method not implemented.");
   }
   recoverAll(): Promise<Consulta[]> {

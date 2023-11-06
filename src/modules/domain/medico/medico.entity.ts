@@ -85,6 +85,7 @@ export class Medico extends Entity<Medico> implements IMedico{
     this.idade = dados.idade;
     this.telefone = dados.telefone;
     this.endereco = dados.endereco;
+    this.status = dados.status;
     this.especialidade = dados.especialidade;
   }
   

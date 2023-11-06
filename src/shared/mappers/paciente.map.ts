@@ -9,6 +9,17 @@ export class PacienteMap {
       CPF: paciente.CPF,
       endereco: paciente.endereco,
       idade: paciente.idade,
+      telefone: paciente.telefone,
+    }
+  }
+
+  public static toMongo(paciente: IPaciente): IPaciente{
+    return {
+      id: paciente.id,
+      nome: paciente.nome,
+      idade: paciente.idade,
+      CPF: paciente.CPF,
+      endereco: paciente.endereco,
       telefone: paciente.telefone
     }
   }
