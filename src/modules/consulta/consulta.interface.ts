@@ -1,6 +1,4 @@
-import { Medico } from "../domain/medico/medico.entity";
 import { IMedico } from "../domain/medico/medico.interface";
-import { Paciente } from "../domain/paciente/paciente.entity";
 import { IPaciente } from "../domain/paciente/paciente.interface";
 
 export enum paymentStatus {

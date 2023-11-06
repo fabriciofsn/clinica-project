@@ -10,6 +10,7 @@ import { PacienteMap } from "./shared/mappers/paciente.map";
 import { MedicoMap } from "./shared/mappers/medico.map";
 import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
 import mongoose from "mongoose";
+import { ConsultaRepository } from "@modules/infra/db/consultas/consulta.repo";
 
 
 const endereco: IEndereco = {
@@ -152,7 +153,7 @@ async function findPaciente() {
     })
     // console.log(MedicoMap.toMongo(marcarConsulta.medico))
     
-    consultaSave.save().then(() => console.log('Consulta Agendada!'));
+    // consultaSave.save().then(() => console.log('Consulta Agendada!'));
    
 //       const pessoaUpdate: IPaciente = {
 //       nome: 'Rian Marteiro de Marta',
@@ -166,7 +167,8 @@ async function findPaciente() {
     // const atualizar = await new PacienteRepository()
     // .update('792433d1-daae-4e12-a59a-1a7b1b2269ea', PacienteMap.toDomain(pacienteUpdate));
     // console.log(atualizar);
-   
+    const consultaRec = await new ConsultaRepository().recoverByID('366a73ad-69d6-4762-b035-a26f494138fc')
+    console.log(consultaRec);
   }
 }
 findPaciente();

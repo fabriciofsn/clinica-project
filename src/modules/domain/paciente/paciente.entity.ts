@@ -2,7 +2,7 @@ import { Entity } from "../../../shared/entity/entity";
 import { Exceptions } from "./paciente.exception";
 import { IEndereco, IPaciente } from "./paciente.interface";
 
-export class Paciente  extends Entity<Paciente> implements IPaciente{
+export class Paciente extends Entity<Paciente> implements IPaciente{
   private _nome: string;
   private _CPF: string;
   private _endereco: IEndereco;  
@@ -32,7 +32,7 @@ export class Paciente  extends Entity<Paciente> implements IPaciente{
   private set CPF(CPF: string) {
     const regexp: RegExp = /^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$/;
     if(!regexp.test(CPF)){
-      throw Error();
+      throw new Exceptions.CPFinvalido();
     }
     this._CPF = CPF;
   }
