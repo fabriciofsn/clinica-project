@@ -19,7 +19,14 @@ export class PacienteMap {
       nome: paciente.nome,
       idade: paciente.idade,
       CPF: paciente.CPF,
-      endereco: paciente.endereco,
+      endereco: {
+        estado: paciente.endereco.estado,
+        cidade: paciente.endereco.cidade,
+        bairro: paciente.endereco.bairro,
+        rua: paciente.endereco.rua,
+        numero: paciente.endereco.numero,
+        cep: paciente.endereco.cep
+      },
       telefone: paciente.telefone
     }
   }
