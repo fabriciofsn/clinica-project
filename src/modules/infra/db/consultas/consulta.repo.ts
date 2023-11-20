@@ -1,9 +1,8 @@
 import { Consulta } from "@modules/consulta/consulta.entity";
 import { IConsulta } from "@modules/consulta/consulta.interface";
-import { consultaDB, medicoDB } from "@modules/database/schema";
+import { consultaDB } from "@modules/database/schema";
 import { IRespository } from "@shared/repository/interfacce.repo";
 import { resolveEnumFromMongo } from "./status.medico.conulta";
-import { PacienteMap } from "@shared/mappers/paciente.map";
 
 export class ConsultaRepository implements IRespository<Consulta>{
   async recoverByID(UUID: string): Promise<Consulta | null> {
@@ -60,7 +59,7 @@ export class ConsultaRepository implements IRespository<Consulta>{
 
     let arr: Array<Consulta> = [];
 
-     let consultasRecuperadas = consulta.map(consultas =>{
+     const consultasRecuperadas = consulta.map(consultas =>{
       if(consultas.paciente && consultas.paciente.endereco && consultas.paciente && consultas.medico && consultas.medico.endereco){
       const consulta: IConsulta = {
         id: consultas.id,

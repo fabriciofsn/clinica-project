@@ -1,4 +1,4 @@
-import { Entity } from "../../../shared/entity/entity";
+import { Entity } from "@shared/entity/entity";
 import { Exceptions } from "./paciente.exception";
 import { IEndereco, IPaciente } from "./paciente.interface";
 

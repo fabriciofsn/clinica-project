@@ -89,7 +89,6 @@ export class Medico extends Entity<Medico> implements IMedico{
     this.especialidade = dados.especialidade;
   }
   
-
   public static createNewMedico(dados: IMedico): Medico{
     return new Medico(dados);
   }

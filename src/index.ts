@@ -1,29 +1,28 @@
 import { databaseConnection } from "./modules/database/database.connection";
 import { Paciente } from "./modules/domain/paciente/paciente.entity";
 import { IEndereco, IPaciente } from "./modules/domain/paciente/paciente.interface";
-import { medicoDB, pacienteDB,consultaDB } from "./modules/database/schema";
+import { medicoDB, pacienteDB, consultaDB } from "./modules/database/schema";
 import { IMedico, StatusMedico } from "./modules/domain/medico/medico.interface";
 import { Medico } from "./modules/domain/medico/medico.entity";
 import { IConsulta, paymentMethod, paymentStatus, statusConsulta } from "./modules/consulta/consulta.interface";
 import { Consulta } from "./modules/consulta/consulta.entity";
 import { PacienteMap } from "./shared/mappers/paciente.map";
 import { MedicoMap } from "./shared/mappers/medico.map";
-import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
-import mongoose from "mongoose";
 import { ConsultaRepository } from "@modules/infra/db/consultas/consulta.repo";
-
+import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
+import { EnvioSMS } from "@modules/services/envio.sms";
 
 const endereco: IEndereco = {
-  estado: 'sergipe',cidade:'tobias', rua: 'Rua A',
-  cep: '49300-000',bairro: 'centro', numero: '200'
+  estado: 'sergipe',cidade:'tobias', rua: 'Rua B',
+  cep: '49300-000',bairro: 'centro', numero: '680'
 }
 
 const pessoa: IPaciente = {
-  nome: 'Rian Souza de Gois',
-  CPF: '70243512544',
+  nome: 'Marta Rianzeira',
+  CPF: '95045678944',
   endereco,
-  idade: 18,
-  telefone: '79888888888'
+  idade: 20,
+  telefone: '79854545474'
 }
 
 const paciente = Paciente.createNewPaciente(pessoa);
@@ -46,15 +45,15 @@ const novoPaciente = new pacienteDB({
 })
 
 const enderecoMedico: IEndereco = {
-  estado: 'Albânia',cidade:'Shkoder', rua: 'street C',
-  cep: '85479-9090',bairro: 'centro', numero: '224'
+  estado: 'fundo do mar',cidade:'Fenda do biquini', rua: 'street C',
+  cep: '54865-7894',bairro: 'centro', numero: '001'
 }
 
 const medico: IMedico = {
-  nome: 'Patolino Sheldon',
-  idade: 35,
-  CRM: '058457/US',
-  especialidade: 'Dentista',
+  nome: 'Patrick Star',
+  idade: 45,
+  CRM: '058978/US',
+  especialidade: 'Ortopedista',
   endereco: enderecoMedico,
   telefone: '79988888888',
   status: StatusMedico.ATIVO
@@ -81,14 +80,14 @@ const medicoOnSave = new medicoDB({
   especialidade: novoMedico.especialidade
 })
 
-// medicoOnSave.save().then(() => console.log('Médico saldo no banco'));
+// medicoOnSave.save().then(() => console.log('Médico salvo no banco'));
 
 async function findPaciente() {
   const pacienteRecuperado = await pacienteDB.findOne({
-    id: '792433d1-daae-4e12-a59a-1a7b1b2269ea'
+    id: '35e27e38-9837-4145-805b-654235cbc58f'
   });
   const medicoRecuperado = await medicoDB.findOne({
-    id: '42f39f3b-bb3c-4a4b-b247-9d35042fa037'
+    id: '23822a26-88cc-4ae6-9932-3f3505d047d3'
   });
  
   const medicos = await pacienteDB.find();
@@ -155,20 +154,21 @@ async function findPaciente() {
     
     // consultaSave.save().then(() => console.log('Consulta Agendada!'));
    
-//       const pessoaUpdate: IPaciente = {
-//       nome: 'Rian Marteiro de Marta',
-//       CPF: '70243512544',
-//       endereco,
-//       idade: 18,
-//       telefone: '79000000009'
-// }
-//     const pacienteUpdate = Paciente.createNewPaciente(pessoaUpdate); 
+      const pessoaUpdate: IPaciente = {
+      nome: 'Rian Marteiro de Marta',
+      CPF: '70243512544',
+      endereco,
+      idade: 18,
+      telefone: '79996557845'
+}
+    const pacienteUpdate = Paciente.createNewPaciente(pessoaUpdate); 
 
     // const atualizar = await new PacienteRepository()
-    // .update('792433d1-daae-4e12-a59a-1a7b1b2269ea', PacienteMap.toDomain(pacienteUpdate));
+    // .update('85425be5-d630-4d15-881a-3ead43015ae6', PacienteMap.toDomain(pacienteUpdate));
     // console.log(atualizar);
-    const consultaRec = await new ConsultaRepository().recoverByID('366a73ad-69d6-4762-b035-a26f494138fc')
-    console.log(consultaRec);
+    // const consultaRec = await new ConsultaRepository().recoverAll();
+    // console.log(consultaRec);
+    console.log(await new EnvioSMS().consultas())
   }
 }
 findPaciente();

@@ -12,12 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "@types/mongoose": "^5.11.97",
+    "axios": "^1.6.2",
     "dotenv": "^16.3.1",
     "mongoose": "^8.0.0",
     "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
     "sucrase": "^3.34.0",
-    "tsconfig-paths": "^4.2.0"
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.2.2"
   }
 }
