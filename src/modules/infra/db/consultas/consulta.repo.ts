@@ -126,7 +126,9 @@ export class ConsultaRepository implements IRespository<Consulta>{
   }
   
   async delete(UUID: string): Promise<boolean> {
-    const consultaDeletada = await consultaDB.findOne({id: UUID});
+    const consultaDeletada = await consultaDB.findOneAndUpdate({id: UUID}, {
+      data_de_exclusao: new Date()
+    });
     if(consultaDeletada) return true;
     return false;
   }
