@@ -5,7 +5,7 @@ require('dotenv').config();
 
 export class EnvioSMS{
 
-  private _message: string = 'Oál%20Sua%20Consulta%20é%20amanhã';
+  private _message: string = 'Olá%20Sua%20Consulta%20é%20amanhã';
 
   public async consultas(): Promise<void>{
     const findConsultas = await new ConsultaRepository().recoverAll();

@@ -6,6 +6,7 @@
     "paths": {
       "@modules/*": ["./modules/*"],
       "@shared/*": ["./shared/*"],
+      "@main/*": ["./main/*"]
     },
     "rootDirs": ["src"],
     "sourceMap": true,                                
