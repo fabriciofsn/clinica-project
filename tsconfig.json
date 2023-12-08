@@ -8,6 +8,7 @@
       "@shared/*": ["./shared/*"],
       "@main/*": ["./main/*"]
     },
+     "outDir": "./dist",
     "rootDirs": ["src"],
     "sourceMap": true,                                
     "esModuleInterop": true,                              
