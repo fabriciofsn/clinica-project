@@ -1,6 +1,7 @@
 import { pacienteDB } from "@modules/database/schema";
 import { Paciente } from "@modules/domain/paciente/paciente.entity";
 import { IPaciente } from "@modules/domain/paciente/paciente.interface";
+import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
 import { Request, Response } from "express";
 
 class PacienteRoute {
@@ -30,23 +31,8 @@ class PacienteRoute {
     })
 
     try{
-     const pacientes = new pacienteDB({
-        id: paciente.id,
-        nome: paciente.nome,
-        CPF: paciente.CPF,
-        idade: paciente.idade,
-        telefone: paciente.telefone,
-        endereco:[{
-          estado: paciente.endereco.estado,
-          cidade: paciente.endereco.cidade,
-          bairro: paciente.endereco.bairro,
-          numero: paciente.endereco.numero,
-          cep: paciente.endereco.cep,
-          rua: paciente.endereco.rua
-        }]
-      })
-      pacientes.save().then(() => console.log('Paciente Salvo'))
-      res.redirect('/');
+      let cadastrarPaciente = await new PacienteRepository().insert(paciente);
+      console.log(cadastrarPaciente);
     }catch(e){
       console.log(`There was an error ${e}`);
     }

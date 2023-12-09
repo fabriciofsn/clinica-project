@@ -58,7 +58,21 @@ export class PacienteRepository implements IRespository<Paciente>{
     return false;
   }
   async insert(paciente: Paciente): Promise<boolean> {
-    const insertPaciente = await pacienteDB.create(paciente);
+    const insertPaciente = await pacienteDB.create({
+      id: paciente.id,
+      nome: paciente.nome,
+      idade: paciente.idade,
+      telefone: paciente.telefone,
+      CPF: paciente.CPF,
+      endereco: [{
+        estado: paciente.endereco.estado,
+        cidade: paciente.endereco.cidade,
+        rua: paciente.endereco.rua,
+        bairro: paciente.endereco.bairro,
+        numero: paciente.endereco.numero,
+        cep: paciente.endereco.cep
+      }]
+    });
     if(insertPaciente) return true;
     return false;
   }
