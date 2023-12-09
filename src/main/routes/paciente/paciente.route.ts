@@ -1,4 +1,3 @@
-import { pacienteDB } from "@modules/database/schema";
 import { Paciente } from "@modules/domain/paciente/paciente.entity";
 import { IPaciente } from "@modules/domain/paciente/paciente.interface";
 import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
@@ -31,8 +30,8 @@ class PacienteRoute {
     })
 
     try{
-      let cadastrarPaciente = await new PacienteRepository().insert(paciente);
-      console.log(cadastrarPaciente);
+      await new PacienteRepository().insert(paciente);
+      res.redirect('/');
     }catch(e){
       console.log(`There was an error ${e}`);
     }
