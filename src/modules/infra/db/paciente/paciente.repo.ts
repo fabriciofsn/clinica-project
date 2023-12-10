@@ -52,6 +52,7 @@ export class PacienteRepository implements IRespository<Paciente>{
       return Paciente.createNewPaciente(fromMongoToObject);
     })
   }
+  
   async exist(UUID: string): Promise<boolean> {
     const paciente = await pacienteDB.findById({id:UUID});
     if(paciente) return true;
