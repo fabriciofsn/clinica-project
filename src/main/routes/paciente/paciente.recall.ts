@@ -1,6 +1,4 @@
-import { Paciente } from "@modules/domain/paciente/paciente.entity";
 import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
-import { fromMongoToPaciente } from "@shared/mongoMappers/fromMongoToPaciente";
 import { Request, Response } from "express";
 
 class RecuperarTodosPacientes {

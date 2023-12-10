@@ -53,8 +53,8 @@ export class PacienteRepository implements IRespository<Paciente>{
     })
   }
   
-  async exist(UUID: string): Promise<boolean> {
-    const paciente = await pacienteDB.findById({id:UUID});
+  async exist(CPF: string): Promise<boolean> {
+    const paciente = await pacienteDB.findOne({CPF: CPF});
     if(paciente) return true;
     return false;
   }
