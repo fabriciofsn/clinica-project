@@ -6,7 +6,7 @@ import { IPaciente } from "@modules/domain/paciente/paciente.interface";
 export class PacienteRepository implements IRespository<Paciente>{
 
   async recoverByID(UUID: string): Promise<Paciente | null> {
-    const paciente = await pacienteDB.findOne(UUID);
+    const paciente = await pacienteDB.findOne({id: UUID});
     if(paciente){
     const fromMongoToObject: IPaciente = {
       id: paciente.id,
