@@ -8,8 +8,15 @@ class PacienteJaCadastrado extends DomainException{
   }
 }
 
-
+class PacienteInexistente extends DomainException{
+  constructor(message: string = 'Paciente não encontrado.'){
+    super(message);
+    this.message = message;
+    this.name = 'PacienteNãoEncontrado';
+  }
+}
 
 export const useCasesExceptions = {
   PacienteJaCadastrado,
+  PacienteInexistente
 }

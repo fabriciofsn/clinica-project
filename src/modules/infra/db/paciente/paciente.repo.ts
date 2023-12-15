@@ -53,8 +53,8 @@ export class PacienteRepository implements IRespository<Paciente>{
     })
   }
   
-  async exist(CPF: string): Promise<boolean> {
-    const paciente = await pacienteDB.findOne({CPF: CPF});
+  async exist(UUID: string): Promise<boolean> {
+    const paciente = await pacienteDB.findOne({id: UUID});
     if(paciente) return true;
     return false;
   }
@@ -77,12 +77,14 @@ export class PacienteRepository implements IRespository<Paciente>{
     if(insertPaciente) return true;
     return false;
   }
-  async update(UUID: string, paciente: IPaciente): Promise<boolean> {
-    const pacienteUpdate = await pacienteDB.updateOne({id: UUID},paciente);
+
+  async update(id: string, paciente: IPaciente): Promise<boolean> {
+    const pacienteUpdate = await pacienteDB.updateOne({id}, paciente, {new: true}).exec();
 
     if(pacienteUpdate) return true;
     return false;
   }
+
   async delete(UUID: string): Promise<boolean> {
     const deleteRow = await pacienteDB.deleteOne({id: UUID});
     if(deleteRow) return true;
