@@ -4,7 +4,7 @@ import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
 import { Request, Response } from "express";
 import { useCasesExceptions } from "../exception/usecase.exception";
 
-class PacienteRoute {
+class CreatePaciente {
   public async cadastrarPaciente(req: Request, res: Response){
     let {nome, CPF,idade,telefone, endereco: {
       estado,
@@ -44,4 +44,4 @@ class PacienteRoute {
   }
 }
 
-export const pacienteRoute = new PacienteRoute().cadastrarPaciente;
+export const pacienteRoute = new CreatePaciente().cadastrarPaciente;

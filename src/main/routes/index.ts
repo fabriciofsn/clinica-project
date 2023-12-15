@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { pacienteRoute } from "./paciente/paciente.route";
+import { pacienteRoute } from "./paciente/paciente.create";
 import { homepage } from "./home/home.route";
 import { recuperarPacientePorId } from "./paciente/paciente.rec";
 import { pacientesRecuperados } from "./paciente/paciente.recall";
