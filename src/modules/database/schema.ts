@@ -43,8 +43,8 @@ const pacienteSchema = new Schema({
 
 const consultaSchema = new Schema({
   id: { type: String, required: true },
-  paciente: { type: Schema.Types.ObjectId, ref: 'Paciente', required: true },
-  medico: { type: Schema.Types.ObjectId, ref: 'Medico', required: true },
+  paciente:pacienteSchema,
+  medico: medicoSchema,
   data: { type: Date, required: true },
   valor: { type: Number, required: true },
   status_do_pagamento: { type: String, enum: paymentStatus, required: true },
