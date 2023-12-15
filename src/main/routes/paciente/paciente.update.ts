@@ -4,6 +4,7 @@ import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
 import { Request, Response } from "express";
 import { useCasesExceptions } from "../exception/usecase.exception";
 import { PacienteMap } from "@shared/mappers/paciente.map";
+import { StatusCodes } from "http-status-codes";
 
 class PacienteUpdate {
   public async updatePaciente(req: Request, res: Response){
@@ -39,10 +40,10 @@ class PacienteUpdate {
       const buscarPaciente = await new PacienteRepository().exist(id);
       if(!buscarPaciente) throw new useCasesExceptions.PacienteInexistente();
 
-      let update = await new PacienteRepository().update(id, pacienteMapper);
-      res.send(update);
-    }catch(e){
-      throw e;
+      await new PacienteRepository().update(id, pacienteMapper);
+      res.status(200);
+    }catch(e: any){
+      res.status(StatusCodes.GATEWAY_TIMEOUT).json({error: e.message});
     }
 
   }

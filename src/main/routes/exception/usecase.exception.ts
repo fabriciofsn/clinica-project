@@ -16,7 +16,25 @@ class PacienteInexistente extends DomainException{
   }
 }
 
+class MedicoJaCadastrado extends DomainException{
+  constructor(message: string = 'Médico já cadastrado com este CRM'){
+    super(message);
+    this.message = message;
+    this.name = "MedicoJáCadastrado";
+  }
+}
+
+class MedicoInexistente extends DomainException{
+  constructor(message: string = 'Médico não encontrado.'){
+    super(message);
+    this.message = message;
+    this.name = 'MédicoNãoEncontrado';
+  }
+}
+
 export const useCasesExceptions = {
   PacienteJaCadastrado,
-  PacienteInexistente
+  PacienteInexistente,
+  MedicoJaCadastrado,
+  MedicoInexistente
 }

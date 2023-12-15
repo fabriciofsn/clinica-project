@@ -150,7 +150,7 @@ async function findPaciente() {
     })
     // console.log(MedicoMap.toMongo(marcarConsulta.medico))
     
-    // consultaSave.save().then(() => console.log('Consulta Agendada!'));
+    consultaSave.save().then(() => console.log('Consulta Agendada!'));
    
       const pessoaUpdate: IPaciente = {
       nome: 'Rian Marteiro de Marta',

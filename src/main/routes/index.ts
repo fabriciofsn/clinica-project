@@ -5,6 +5,7 @@ import { recuperarPacientePorId } from "./paciente/paciente.rec";
 import { pacientesRecuperados } from "./paciente/paciente.recall";
 import { atualizarPaciente } from "./paciente/paciente.update";
 import { deletePaciente } from "./paciente/paciente.delete";
+import { medicoCadastrado } from "./medico/medico.create";
 
 export const router: Router = Router();
 
@@ -14,3 +15,5 @@ router.post('/paciente/id', recuperarPacientePorId);
 router.get('/pacientes/recuperados', pacientesRecuperados);
 router.post('/paciente/atualizar/:id', atualizarPaciente);
 router.post('/deletar/paciente/:id', deletePaciente);
+
+router.post('/cadastrar/medico', medicoCadastrado);

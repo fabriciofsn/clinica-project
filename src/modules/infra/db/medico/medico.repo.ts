@@ -59,7 +59,7 @@ export class MedicoRepository implements IRespository<Medico>{
     if(medico) return true;
     return false;
   }
-  async insert(medico: Medico): Promise<boolean> {
+  async insert(medico: IMedico): Promise<boolean> {
     const insertMedico = await medicoDB.create(medico);
     if(insertMedico) return true;
     return false;

@@ -1,15 +1,16 @@
 import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
 import { Request, Response } from "express";
+import { StatusCodes } from "http-status-codes";
 
 class RecuperarPacientePorID {
   public async recuperarPorId(req: Request, res: Response){
     let {id} = req.body;
 
     try{
-      let paciente = await new PacienteRepository().recoverByID(id);
-      res.json({paciente: paciente});
-    }catch(e){
-      console.log(`There was an error ${e}`);
+      await new PacienteRepository().recoverByID(id);
+      res.status(200);
+    }catch(e: any){
+      res.status(StatusCodes.GATEWAY_TIMEOUT).json({error: e.message});
     }
   }
 }
