@@ -113,7 +113,7 @@ export class ConsultaRepository implements IRespository<Consulta>{
     return false;
   }
 
-  async insert(entity: Consulta): Promise<boolean> {
+  async insert(entity: IConsulta): Promise<boolean> {
     const consultaSalva = await consultaDB.create(entity);
     if(consultaSalva) return true;
     return false;
