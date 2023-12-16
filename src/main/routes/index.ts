@@ -9,6 +9,7 @@ import { medicoCadastrado } from "./medico/medico.create";
 import { recuperarMedicoPorId } from "./medico/medico.rec";
 import { recuperarMedicos } from "./medico/medico.recall";
 import { updatedMedico } from "./medico/medico.update";
+import { medicoDeletado } from "./medico/medico.delete";
 
 export const router: Router = Router();
 
@@ -23,3 +24,4 @@ router.post('/cadastrar/medico', medicoCadastrado);
 router.post('/medico/:id', recuperarMedicoPorId);
 router.get('/medicos', recuperarMedicos);
 router.post('/medico/atualizar/:id', updatedMedico);
+router.post('/medico/deletar/:id', medicoDeletado);
