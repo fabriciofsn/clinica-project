@@ -4,6 +4,7 @@ import { IMedico } from "@modules/domain/medico/medico.interface";
 import { IRespository } from "@shared/repository/interfacce.repo";
 
 export class MedicoRepository implements IRespository<Medico>{
+  
   async recoverByID(UUID: string): Promise<Medico | null> {
     const medicoRecuperado = await medicoDB.findOne({id: UUID})
     if(medicoRecuperado){
@@ -64,7 +65,7 @@ export class MedicoRepository implements IRespository<Medico>{
     if(insertMedico) return true;
     return false;
   }
-  async update(UUID: string, medico: Medico): Promise<boolean> {
+  async update(UUID: string, medico: IMedico): Promise<boolean> {
     const updateMedico = await medicoDB.updateOne({id: UUID}, medico);
 
     if(updateMedico) return true;

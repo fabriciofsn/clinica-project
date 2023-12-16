@@ -49,5 +49,4 @@ class PacienteUpdate {
   }
 }
 
-
 export const atualizarPaciente = new PacienteUpdate().updatePaciente;
