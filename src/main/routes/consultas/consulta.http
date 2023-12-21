@@ -14,11 +14,9 @@ Content-type: application/json
 
 
 ### Consultas Recuperadas
-
 GET http://localhost:3000/consultas
 
 ### Atualizar Consulta
-
 PUT http://localhost:3000/consulta/3522a0fb-5a08-4944-ab73-0be0064939cb
 Content-type: application/json
 
@@ -31,3 +29,8 @@ Content-type: application/json
   "metodo_do_pagamento": "PIX",
   "data": "2024-01-25"
 }
+
+
+### Deletar Consulta
+
+GET http://localhost:3000/consulta/deletar/a7f52d12-fce8-4650-ad87-f562ac6b770a

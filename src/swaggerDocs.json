@@ -1,0 +1,263 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Documentação API Home Clinic",
+    "version": "1.0.0",
+    "description": "Documentação API"
+  },
+  "basePath": "/",
+
+  "paths": {
+    "/cadastrar/paciente": {
+      "post": {
+        "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties":{
+                  "nome": {"type": "string"},
+                  "idade": {"type": "number"},
+                  "CPF": {"type": "string"},
+                  "telefone": {"type": "string"},
+                  "endereco": {"type": "object"} 
+                } 
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "responses":{
+      "200":{
+        "description": "Paciente Cadastrado",
+        "content":{
+          "application/json":{
+            "200":{
+              "message":{
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+
+
+    "/paciente/id": {
+      "get": {
+        "summary": "Buscar Paciente por ID",
+        "description": "Endpoint para buscar paciente por ID",
+         "parameters":{
+          "in": "query",
+          "name": "id",
+          "type": "string"
+         },
+        "responses": {
+          "200": {
+            "description": "Paciente Recuperado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Dados criados com sucesso"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+     "/pacientes": {
+      "get": {
+        "summary": "Buscar Todos os Pacientes",
+        "description": "Buscar Todos os Pacientes",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Paciente Recuperado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Dados criados com sucesso"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/paciente/atualizar/:id": {
+      "put": {
+        "summary": "Atualizar Paciente através do ID",
+        "description": "Atualizar Pacientes",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Paciente Recuperado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Dados criados com sucesso"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+     "/deletar/paciente/:id": {
+      "get": {
+        "summary": "Deletar Paciente através do ID",
+        "description": "Deletar Pacientes",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Paciente Recuperado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Dados criados com sucesso"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cadastrar/medico": {
+      "post": {
+        "summary": "Cadastrar Médico",
+        "description": "Cadastrar Médico",
+          "requestBody":{
+          "content":{
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties":{
+                  "nome": {"type": "string"},
+                  "idade": {"type": "number"},
+                  "CRM": {"type": "string"},
+                  "telefone": {"type": "string"},
+                  "endereco": {"type": "object"} 
+                } 
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Paciente Recuperado",
+            "content": {
+              "application/json": {
+                "example": {
+                  "mensagem": "Dados criados com sucesso"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/medico/:id": {
+      "get": {
+        "summary": "Buscar Médico Por ID",
+        "description": "Buscar Médico",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        }
+      }
+    },
+    "/medicos": {
+      "get": {
+        "summary": "Buscar Médicos",
+        "description": "Buscar Médico",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        }
+      }
+    },
+    "/medicos/atualizar/:id": {
+      "put": {
+        "summary": "Atualizar Médico Através do ID",
+        "description": "atualizar Médico",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        }
+      }
+    },
+    "/medico/deletar/:id": {
+      "get": {
+        "summary": "Deletar Médico Por ID",
+        "description": "Deletar Médico",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        }
+      }
+    },
+    "/agendar/consulta": {
+      "post": {
+        "summary": "Agendar Consulta",
+        "description": "Agendar Consulta",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        }
+      }
+    },
+    "/consulta/:id": {
+      "get": {
+        "summary": "Buscar Consulta Por ID",
+        "description": "Buscar Consulta",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        }
+      }
+    },
+    "/consultas": {
+      "get": {
+        "summary": "Buscar Todas As consultas",
+        "description": "Buscar Consultas",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        }
+      }
+    },
+    "consulta/deletar/:id": {
+      "get": {
+        "summary": "Deletar Consulta Por ID",
+        "description": "Deletar Consulta",
+          "requestBody":{
+          "content":{
+            "application/json":{}
+          }
+        }
+      }
+    }
+  }
+}

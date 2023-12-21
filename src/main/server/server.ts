@@ -1,8 +1,11 @@
 import bodyParser from "body-parser";
 import cors from 'cors';
 import Express from "express";
+import helmet from "helmet";
+import SwaggerUI from "swagger-ui-express";
 
 import { router } from "main/routes/index";
+import swaggerDocs from '../../swaggerDocs.json';
 
 export class Server {
   public app: Express.Application;
@@ -15,6 +18,7 @@ export class Server {
 
   private middlewares(){
     this.app.disable('x-powered-by')
+    this.app.use(helmet());
     this.app.use(Express.json());
     this.app.use(bodyParser.urlencoded({extended: true}));
     this.app.use(cors({
@@ -25,5 +29,6 @@ export class Server {
 
   private routes(){
     this.app.use(router);
+    this.app.use('/api-docs', SwaggerUI.serve, SwaggerUI.setup(swaggerDocs));
   }
 }

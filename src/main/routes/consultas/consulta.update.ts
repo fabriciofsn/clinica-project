@@ -1,4 +1,3 @@
-import { IConsulta } from "@modules/consulta/consulta.interface";
 import { ConsultaRepository } from "@modules/infra/db/consultas/consulta.repo";
 import { MedicoRepository } from "@modules/infra/db/medico/medico.repo";
 import { Request, Response } from "express";
@@ -39,7 +38,7 @@ class UpdateConsulta {
       const consultaMapper = ConsultaMap.toMongo(consulta);
       const consultaUpdated = await new ConsultaRepository().update(id, consultaMapper);
 
-      res.status(200).json({consultaMapper});
+      res.status(200).json({consultaUpdated});
 
     }catch(e: any){
       res.status(404).json({error: e.message});

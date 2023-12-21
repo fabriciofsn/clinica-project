@@ -14,23 +14,25 @@ import { agendarConsulta } from "./consultas/consulta.create";
 import { recuperarConsulta } from "./consultas/consulta.rec";
 import { consultasRecuperadas } from "./consultas/consulta.recall";
 import { consultaUpdate } from "./consultas/consulta.update";
+import { deletarConsulta } from "./consultas/consulta.delete";
 
 export const router: Router = Router();
 
 router.get('/', homepage);
 router.post('/cadastrar/paciente',pacienteRoute);
-router.post('/paciente/id', recuperarPacientePorId);
+router.get('/paciente/id', recuperarPacientePorId);
 router.get('/pacientes', pacientesRecuperados);
-router.post('/paciente/atualizar/:id', atualizarPaciente);
-router.post('/deletar/paciente/:id', deletePaciente);
+router.put('/paciente/atualizar/:id', atualizarPaciente);
+router.get('/deletar/paciente/:id', deletePaciente);
 
 router.post('/cadastrar/medico', medicoCadastrado);
-router.post('/medico/:id', recuperarMedicoPorId);
+router.get('/medico/:id', recuperarMedicoPorId);
 router.get('/medicos', recuperarMedicos);
-router.post('/medico/atualizar/:id', updatedMedico);
+router.put('/medico/atualizar/:id', updatedMedico);
 router.post('/medico/deletar/:id', medicoDeletado);
 
 router.post('/agendar/consulta', agendarConsulta);
 router.post('/consulta/:id', recuperarConsulta);
 router.get('/consultas', consultasRecuperadas);
 router.put('/consulta/:id', consultaUpdate);
+router.get('/consulta/deletar/:id', deletarConsulta);
