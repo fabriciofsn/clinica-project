@@ -1,8 +1,9 @@
 import { Consulta } from "@modules/consulta/consulta.entity";
-import { IConsulta, paymentMethod } from "@modules/consulta/consulta.interface";
+import { IConsulta, ToMongoSaveConsulta, paymentMethod } from "@modules/consulta/consulta.interface";
 import { consultaDB } from "@modules/database/schema";
 import { IRespository } from "@shared/repository/interfacce.repo";
 import { resolveEnumFromMongo } from "./status.medico.conulta";
+import { StatusMedico } from "@modules/domain/medico/medico.interface";
 
 export class ConsultaRepository implements IRespository<Consulta>{
 
@@ -46,9 +47,9 @@ export class ConsultaRepository implements IRespository<Consulta>{
         },
         data: consultaRecuperada.data,
         valor: consultaRecuperada.valor,
-        paymentStatus: resolveEnumFromMongo.fromMongoToPayment(consultaRecuperada.status_do_pagamento),
-        statusConsulta: resolveEnumFromMongo.fromMongoToStatusConsulta(consultaRecuperada.status_da_consulta),
-        paymentMethod: consultaRecuperada.metodo_do_pagamento as paymentMethod,
+        status_do_pagamento: resolveEnumFromMongo.fromMongoToPayment(consultaRecuperada.status_do_pagamento),
+        status_da_consulta: resolveEnumFromMongo.fromMongoToStatusConsulta(consultaRecuperada.status_da_consulta),
+        metodo_do_pagamento: consultaRecuperada.metodo_do_pagamento as paymentMethod,
       }
       return Consulta.marcarConsulta(consulta);
     }
@@ -84,7 +85,7 @@ export class ConsultaRepository implements IRespository<Consulta>{
           nome: consultas.medico.nome,
           CRM: consultas.medico.CRM,
           idade: consultas.medico.idade,
-          status: resolveEnumFromMongo.fromMongoToStatus(consultas.medico.status),
+          status: consultas.medico.status as StatusMedico,
           telefone: consultas.medico.telefone,
           especialidade: consultas.medico.especialidade,
           endereco:{
@@ -98,9 +99,9 @@ export class ConsultaRepository implements IRespository<Consulta>{
         },
         data: consultas.data,
         valor: consultas.valor,
-        paymentStatus: resolveEnumFromMongo.fromMongoToPayment(consultas.status_do_pagamento),
-        statusConsulta: resolveEnumFromMongo.fromMongoToStatusConsulta(consultas.status_da_consulta),
-        paymentMethod: resolveEnumFromMongo.fromMongoToPaymentMethod(consultas.metodo_do_pagamento),
+        status_do_pagamento: resolveEnumFromMongo.fromMongoToPayment(consultas.status_do_pagamento),
+        status_da_consulta: resolveEnumFromMongo.fromMongoToStatusConsulta(consultas.status_da_consulta),
+        metodo_do_pagamento: resolveEnumFromMongo.fromMongoToPaymentMethod(consultas.metodo_do_pagamento),
       }
       arr.push(consulta as Consulta);
       }

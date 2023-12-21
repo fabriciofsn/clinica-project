@@ -9,9 +9,9 @@ export class Consulta extends Entity<Consulta> implements IConsulta{
   private _medico: IMedico;
   private _data: Date;
   private _valor: number;
-  private _paymentStatus: paymentStatus;
-  private _paymentMethod: paymentMethod;
-  private _statusConsulta: statusConsulta;
+  private _status_do_pagamento: paymentStatus;
+  private _metodo_do_pagamento: paymentMethod;
+  private _status_da_consulta: statusConsulta;
   
   
   public get paciente(): IPaciente {
@@ -45,25 +45,25 @@ export class Consulta extends Entity<Consulta> implements IConsulta{
     this._valor = valor;
   }
 
-  public get paymentStatus(): paymentStatus {
-    return this._paymentStatus;
+  public get status_do_pagamento(): paymentStatus {
+    return this._status_do_pagamento;
   }
-  private set paymentStatus(paymentStatus: paymentStatus) {
-    this._paymentStatus = paymentStatus;
-  }
-
-  public get paymentMethod(): paymentMethod {
-    return this._paymentMethod;
-  }
-  private set paymentMethod(paymentMethod: paymentMethod) {
-    this._paymentMethod = paymentMethod;
+  private set status_do_pagamento(paymentStatus: paymentStatus) {
+    this._status_do_pagamento = paymentStatus;
   }
 
-  public get statusConsulta(): statusConsulta {
-    return this._statusConsulta;
+  public get metodo_do_pagamento(): paymentMethod {
+    return this._metodo_do_pagamento;
   }
-  private set statusConsulta(statusConsulta: statusConsulta) {
-    this._statusConsulta = statusConsulta;
+  private set metodo_do_pagamento(paymentMethod: paymentMethod) {
+    this._metodo_do_pagamento = paymentMethod;
+  }
+
+  public get status_da_consulta(): statusConsulta {
+    return this._status_da_consulta;
+  }
+  private set status_da_consulta(statusConsulta: statusConsulta) {
+    this._status_da_consulta = statusConsulta;
   }
 
   private constructor(dados: IConsulta){
@@ -72,9 +72,9 @@ export class Consulta extends Entity<Consulta> implements IConsulta{
     this.medico = dados.medico;
     this.valor = dados.valor;
     this.data = dados.data;
-    this.paymentMethod = dados.paymentMethod;
-    this.statusConsulta = dados.statusConsulta;
-    this.paymentStatus = dados.paymentStatus;
+    this.metodo_do_pagamento = dados.metodo_do_pagamento;
+    this.status_da_consulta = dados.status_da_consulta;
+    this.status_do_pagamento = dados.status_do_pagamento;
   }
 
   public static marcarConsulta(dados: IConsulta): Consulta{

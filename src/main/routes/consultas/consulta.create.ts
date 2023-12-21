@@ -6,7 +6,7 @@ import { ConsultaMap } from "@shared/mappers/consulta.map";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { useCasesExceptions } from "../exception/usecase.exception";
-import { paymentMethod, paymentStatus, statusConsulta } from "@modules/consulta/consulta.interface";
+import { IConsulta, paymentMethod, paymentStatus, statusConsulta } from "@modules/consulta/consulta.interface";
 import { PacienteMap } from "@shared/mappers/paciente.map";
 import { IPaciente } from "@modules/domain/paciente/paciente.interface";
 import { MedicoMap } from "@shared/mappers/medico.map";
@@ -14,8 +14,7 @@ import { IMedico } from "@modules/domain/medico/medico.interface";
 
 class AgendarConsulta{
   public async agendarConsulta(req: Request, res: Response){
-    let {paciente,medico,data,valor,status_do_pagamento,status_da_consulta,metodo_do_pagamento} 
-    = req.body;
+    let {paciente,medico,data,valor,status_do_pagamento,status_da_consulta,metodo_do_pagamento}  = req.body;
 
     try{ 
       const existPaciente = await new PacienteRepository().recoverByID(paciente);
@@ -32,14 +31,13 @@ class AgendarConsulta{
         medico: medicoMap,
         data: data,
         valor: valor,
-        paymentStatus: status_do_pagamento,
-        statusConsulta: status_da_consulta,
-        paymentMethod: metodo_do_pagamento
+        status_do_pagamento: status_do_pagamento,
+        status_da_consulta: status_da_consulta,
+        metodo_do_pagamento: metodo_do_pagamento
       })
 
       const consultaMapper = ConsultaMap.toMongo(consulta);
-      console.log(consultaMapper);
-
+      console.log(consultaMapper)
       const consultaAgendada = await new ConsultaRepository().insert(consultaMapper);
       res.status(200).json({consulta: consultaAgendada});
     }catch(e: any){

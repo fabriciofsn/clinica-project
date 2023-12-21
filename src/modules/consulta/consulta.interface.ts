@@ -24,9 +24,18 @@ export interface IConsulta {
   medico: IMedico;
   data: Date;
   valor: number;
-  paymentStatus: paymentStatus;
-  paymentMethod: paymentMethod;
-  statusConsulta: statusConsulta;
+  status_do_pagamento: paymentStatus;
+  metodo_do_pagamento: paymentMethod;
+  status_da_consulta: statusConsulta;
 }
 
-
+export interface ToMongoSaveConsulta{
+  id?: string;
+  paciente: IPaciente;
+  medico: IMedico;
+  data: Date;
+  valor: number;
+  status_do_pagamento: paymentStatus;
+  metodo_do_pagamento: paymentMethod;
+  status_da_consulta: statusConsulta;
+}

@@ -74,9 +74,9 @@ const consultaSchema = new Schema({
   },
   data: { type: Date, required: true },
   valor: { type: Number, required: true },
-  status_do_pagamento: { type: String, enum: paymentStatus, required: true },
-  metodo_do_pagamento:{type: String, enum: paymentMethod, required: true},
-  status_da_consulta: {type: String, enum: statusConsulta, required: true}
+  status_do_pagamento: {type: String, required: true},
+  metodo_do_pagamento:{type: String, required: true},
+  status_da_consulta: {type: String, required: true}
 })
 
 export const consultaDB = mongoose.model('consultas', consultaSchema);
