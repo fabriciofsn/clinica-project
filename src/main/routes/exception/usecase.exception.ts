@@ -32,9 +32,18 @@ class MedicoInexistente extends DomainException{
   }
 }
 
+class ConsultaNaoExiste extends DomainException{
+  constructor(message: string = 'Consulta não encontrada na base de dados.'){
+    super(message);
+    this.message = message;
+    this.name = 'ConsultaNaoExiste';
+  }
+}
+
 export const useCasesExceptions = {
   PacienteJaCadastrado,
   PacienteInexistente,
   MedicoJaCadastrado,
-  MedicoInexistente
+  MedicoInexistente,
+  ConsultaNaoExiste
 }

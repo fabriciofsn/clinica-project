@@ -27,11 +27,11 @@ export class resolveEnumFromMongo{
   }
 
   public static fromMongoToPaymentMethod(method: string): paymentMethod{
-    if(method === 'CARTÃO DE CRÉDITO') return paymentMethod.CARTÃO_DE_CREDITO;
-    if(method === 'CARTÃO DE DÉBITO') return paymentMethod.CARTÃO_DE_DEBITO;
-    if(method === 'PIX') return paymentMethod.PIX;
-    if(method === 'EM DINHEIRO') return paymentMethod.EM_DINHEIRO;
-
+    if(method == 'CARTAO DE CREDITO') return paymentMethod.CARTAO_DE_CREDITO;
+    if(method == 'CARTAO DE DEBITO') return paymentMethod.CARTAO_DE_DEBITO;
+    if(method == 'PIX') return paymentMethod.PIX;
+    if(method == 'EM DINHEIRO') return paymentMethod.EM_DINHEIRO;
+    
     throw new Error('Método de pagamento é inválido!');
   }
 }

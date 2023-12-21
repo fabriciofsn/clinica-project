@@ -7,7 +7,19 @@ class RecuperarTodosMedicos{
     try{  
 
       const medicos = await new MedicoRepository().recoverAll();
-      res.status(200).json({medicos});
+      const medicosDTO = medicos.map(medico =>{
+        return {
+          id: medico.id,
+          nome: medico.nome,
+          idade: medico.idade,
+          CRM: medico.CRM,
+          endereco: medico.endereco,
+          especialidade: medico.especialidade,
+          status: medico.status,
+          telefone: medico.telefone,
+        }
+      })
+      res.status(200).json({medicosDTO});
     }catch(e: any){
       res.status(StatusCodes.GATEWAY_TIMEOUT).json({error: e.message});
     }

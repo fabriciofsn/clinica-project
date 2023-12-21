@@ -7,8 +7,8 @@ export enum paymentStatus {
 }
 
 export enum paymentMethod {
-  CARTÃO_DE_CREDITO = 'CARTÃO DE CRÉDITO',
-  CARTÃO_DE_DEBITO = 'CARTÃO DE DÉBITO',
+  CARTAO_DE_CREDITO = 'CARTAO DE CREDITO',
+  CARTAO_DE_DEBITO = 'CARTAO DE DEBITO',
   PIX = 'PIX',
   EM_DINHEIRO = 'EM DINHEIRO',
 }
@@ -28,3 +28,5 @@ export interface IConsulta {
   paymentMethod: paymentMethod;
   statusConsulta: statusConsulta;
 }
+
+

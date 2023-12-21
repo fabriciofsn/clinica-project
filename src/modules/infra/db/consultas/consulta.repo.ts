@@ -1,13 +1,14 @@
 import { Consulta } from "@modules/consulta/consulta.entity";
-import { IConsulta } from "@modules/consulta/consulta.interface";
+import { IConsulta, paymentMethod } from "@modules/consulta/consulta.interface";
 import { consultaDB } from "@modules/database/schema";
 import { IRespository } from "@shared/repository/interfacce.repo";
 import { resolveEnumFromMongo } from "./status.medico.conulta";
 
 export class ConsultaRepository implements IRespository<Consulta>{
+
   async recoverByID(UUID: string): Promise<Consulta | null> {
     const consultaRecuperada = await consultaDB.findOne({id: UUID});
-
+    console.log(consultaRecuperada?.metodo_do_pagamento)
     if(consultaRecuperada && consultaRecuperada.medico && consultaRecuperada.medico.endereco && consultaRecuperada.paciente && consultaRecuperada.paciente.endereco){
       const consulta: IConsulta = {
         id: consultaRecuperada.id,
@@ -47,7 +48,7 @@ export class ConsultaRepository implements IRespository<Consulta>{
         valor: consultaRecuperada.valor,
         paymentStatus: resolveEnumFromMongo.fromMongoToPayment(consultaRecuperada.status_do_pagamento),
         statusConsulta: resolveEnumFromMongo.fromMongoToStatusConsulta(consultaRecuperada.status_da_consulta),
-        paymentMethod: resolveEnumFromMongo.fromMongoToPaymentMethod(consultaRecuperada.metodo_de_pagamento),
+        paymentMethod: consultaRecuperada.metodo_do_pagamento as paymentMethod,
       }
       return Consulta.marcarConsulta(consulta);
     }
@@ -99,7 +100,7 @@ export class ConsultaRepository implements IRespository<Consulta>{
         valor: consultas.valor,
         paymentStatus: resolveEnumFromMongo.fromMongoToPayment(consultas.status_do_pagamento),
         statusConsulta: resolveEnumFromMongo.fromMongoToStatusConsulta(consultas.status_da_consulta),
-        paymentMethod: resolveEnumFromMongo.fromMongoToPaymentMethod(consultas.metodo_de_pagamento),
+        paymentMethod: resolveEnumFromMongo.fromMongoToPaymentMethod(consultas.metodo_do_pagamento),
       }
       arr.push(consulta as Consulta);
       }
@@ -113,8 +114,8 @@ export class ConsultaRepository implements IRespository<Consulta>{
     return false;
   }
 
-  async insert(entity: IConsulta): Promise<boolean> {
-    const consultaSalva = await consultaDB.create(entity);
+  async insert(consulta: IConsulta): Promise<boolean> {
+    const consultaSalva = await consultaDB.create(consulta);
     if(consultaSalva) return true;
     return false;
   }
