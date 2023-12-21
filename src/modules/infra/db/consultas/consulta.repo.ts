@@ -121,7 +121,7 @@ export class ConsultaRepository implements IRespository<Consulta>{
     return false;
   }
   
-  async update(UUID: string, consulta: Consulta): Promise<boolean> {
+  async update(UUID: string, consulta: IConsulta): Promise<boolean> {
     const consultaAtualizada = await consultaDB.updateOne({id: UUID}, consulta);
     if(consultaAtualizada) return true;
     return false;

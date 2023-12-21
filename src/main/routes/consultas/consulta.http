@@ -1,6 +1,7 @@
 ### Agendar consulta
 POST http://localhost:3000/agendar/consulta
 Content-type: application/json
+
 {
   "paciente": "85425be5-d630-4d15-881a-3ead43015ae6",
   "medico": "42f39f3b-bb3c-4a4b-b247-9d35042fa037",
@@ -11,7 +12,22 @@ Content-type: application/json
   "data": "2024-01-25"
 }
 
+
 ### Consultas Recuperadas
 
 GET http://localhost:3000/consultas
 
+### Atualizar Consulta
+
+PUT http://localhost:3000/consulta/3522a0fb-5a08-4944-ab73-0be0064939cb
+Content-type: application/json
+
+{
+  "paciente": "876b0fab-f718-4d34-ba34-f5e5e82ac311",
+  "medico": "5a21deec-d5ec-4c7c-8c59-c92da53ed90f",
+  "valor": 395.00,
+  "status_do_pagamento": "CONFIRMADO",
+  "status_da_consulta": "AGENDADA",
+  "metodo_do_pagamento": "PIX",
+  "data": "2024-01-25"
+}

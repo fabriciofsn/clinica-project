@@ -13,6 +13,7 @@ import { medicoDeletado } from "./medico/medico.delete";
 import { agendarConsulta } from "./consultas/consulta.create";
 import { recuperarConsulta } from "./consultas/consulta.rec";
 import { consultasRecuperadas } from "./consultas/consulta.recall";
+import { consultaUpdate } from "./consultas/consulta.update";
 
 export const router: Router = Router();
 
@@ -32,3 +33,4 @@ router.post('/medico/deletar/:id', medicoDeletado);
 router.post('/agendar/consulta', agendarConsulta);
 router.post('/consulta/:id', recuperarConsulta);
 router.get('/consultas', consultasRecuperadas);
+router.put('/consulta/:id', consultaUpdate);
