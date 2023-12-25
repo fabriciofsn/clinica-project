@@ -3,11 +3,10 @@ import { IPaciente } from "@modules/domain/paciente/paciente.interface";
 import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
 import { Request, Response } from "express";
 import { useCasesExceptions } from "../exception/usecase.exception";
-import { StatusCodes } from "http-status-codes";
 
 class CreatePaciente {
   public async cadastrarPaciente(req: Request, res: Response){
-    let {nome, CPF,idade,telefone, endereco: {
+    let {nome,CPF,idade,telefone, endereco: {
       estado,
       cidade,
       bairro,
@@ -17,17 +16,17 @@ class CreatePaciente {
     }}: IPaciente = req.body;
 
     const paciente: Paciente = Paciente.createNewPaciente({
-      nome: nome,
-      CPF: CPF,
+      nome: nome.trim(),
+      CPF: CPF.trim(),
       idade: idade,
-      telefone: telefone,
+      telefone: telefone.trim(),
       endereco: {
-        estado: estado,
-        cidade: cidade,
-        bairro: bairro,
-        numero: numero,
-        cep: cep,
-        rua: rua
+        estado: estado.trim(),
+        cidade: cidade.trim(),
+        bairro: bairro.trim(),
+        numero: numero.trim(),
+        cep: cep.trim(),
+        rua: rua.trim()
       },
     })
 
@@ -37,10 +36,10 @@ class CreatePaciente {
 
       if(checkIfExist) throw new useCasesExceptions.PacienteJaCadastrado();
 
-      await new PacienteRepository().insert(paciente);
-      res.status(200);
+      const pacienteCadastrado = await new PacienteRepository().insert(paciente);
+      res.status(200).json({pacienteCadastrado});
     }catch(e: any){
-      res.status(StatusCodes.EXPECTATION_FAILED).json({error: e.message});
+      res.status(404).json({error: e.message});
     }
   }
 }
