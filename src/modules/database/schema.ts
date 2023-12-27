@@ -79,6 +79,12 @@ const consultaSchema = new Schema({
   status_da_consulta: {type: String, required: true}
 })
 
+const userSchema = new Schema ({
+  email:  {type: String, required: true},
+  password: {type: String, required: true}
+})
+
 export const consultaDB = mongoose.model('consultas', consultaSchema);
 export const medicoDB = mongoose.model('medicos', medicoSchema);
 export const pacienteDB = mongoose.model('pacientes', pacienteSchema);
+export const userDB = mongoose.model('user', userSchema);
