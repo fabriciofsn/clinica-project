@@ -3,10 +3,11 @@ import { pacienteDB } from "../../../database/schema";
 import { Paciente } from "../../../domain/paciente/paciente.entity";
 import { IPaciente } from "@modules/domain/paciente/paciente.interface";
 
-export class PacienteRepository implements IRespository<Paciente>{
+export class PacienteRepository implements IRespository<IPaciente>{
 
-  async recoverByID(UUID: string): Promise<Paciente | null> {
-    const paciente = await pacienteDB.findOne({id: UUID});
+  async recoverByID(id: string): Promise<IPaciente | null> {
+    const paciente = await pacienteDB.findOne({id: id});
+    
     if(paciente){
     const fromMongoToObject: IPaciente = {
       id: paciente.id,
@@ -24,7 +25,7 @@ export class PacienteRepository implements IRespository<Paciente>{
       telefone: paciente.telefone
       } 
 
-    return Paciente.createNewPaciente(fromMongoToObject);  
+    return fromMongoToObject;  
     }
     return null;
   }
@@ -53,8 +54,8 @@ export class PacienteRepository implements IRespository<Paciente>{
     })
   }
   
-  async exist(CPF: string): Promise<boolean> {
-    const paciente = await pacienteDB.findOne({CPF: CPF});
+  async exist(id: string): Promise<boolean> {
+    const paciente = await pacienteDB.findOne({id: id});
     if(paciente) return true;
     return false;
   }

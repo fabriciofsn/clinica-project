@@ -40,8 +40,8 @@ class PacienteUpdate {
       const buscarPaciente = await new PacienteRepository().exist(id);
       if(!buscarPaciente) throw new useCasesExceptions.PacienteInexistente();
 
-      await new PacienteRepository().update(id, pacienteMapper);
-      res.status(200);
+      const updatedPaciente = await new PacienteRepository().update(id, pacienteMapper);
+      res.status(200).json({updatedPaciente});
     }catch(e: any){
       res.status(StatusCodes.GATEWAY_TIMEOUT).json({error: e.message});
     }

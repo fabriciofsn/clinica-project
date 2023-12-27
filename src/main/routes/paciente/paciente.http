@@ -1,2 +1,7 @@
 ## Recuperar todos os pacientes
-http://localhost:3000/pacientes
+GET http://localhost:3000/pacientes
+
+
+###Recuperar por ID
+GET http://localhost:3000/paciente/f8f68c2c-6f7b-450a-81a4-c1b97ec5c4b8
+Content-Type: application/json

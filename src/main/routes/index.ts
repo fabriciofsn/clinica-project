@@ -20,7 +20,7 @@ export const router: Router = Router();
 
 router.get('/', homepage);
 router.post('/cadastrar/paciente',pacienteRoute);
-router.get('/paciente/id', recuperarPacientePorId);
+router.get('/paciente/:id', recuperarPacientePorId);
 router.get('/pacientes', pacientesRecuperados);
 router.put('/paciente/atualizar/:id', atualizarPaciente);
 router.get('/deletar/paciente/:id', deletePaciente);
