@@ -20,7 +20,14 @@ export class MedicoMap {
       nome: medico.nome,
       idade: medico.idade,
       CRM: medico.CRM,
-      endereco: medico.endereco,
+      endereco: {
+        estado: medico.endereco.estado,
+        cidade :medico.endereco.cidade,
+        bairro: medico.endereco.bairro,
+        cep: medico.endereco.cep,
+        rua: medico.endereco.rua,
+        numero: medico.endereco.numero
+      },
       telefone: medico.telefone,
       status: medico.status,
       especialidade: medico.especialidade,

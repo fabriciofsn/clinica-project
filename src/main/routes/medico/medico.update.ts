@@ -5,6 +5,7 @@ import { MedicoMap } from "@shared/mappers/medico.map";
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import { useCasesExceptions } from "../exception/usecase.exception";
+import { medicoCadastrado } from "./medico.create";
 
 class UpdateMedico{
   public async updateMedico(req: Request, res: Response){

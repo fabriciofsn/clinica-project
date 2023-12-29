@@ -61,7 +61,23 @@ export class MedicoRepository implements IRespository<Medico>{
     return false;
   }
   async insert(medico: IMedico): Promise<boolean> {
-    const insertMedico = await medicoDB.create(medico);
+    const insertMedico = await medicoDB.create({
+      id: medico.id,
+      nome: medico.nome,
+      idade: medico.idade,
+      especialidade: medico.especialidade,
+      CRM: medico.CRM,
+      status: medico.status,
+      telefone: medico.telefone,
+      endereco:[{
+        estado: medico.endereco.estado,
+        cidade: medico.endereco.cidade,
+        rua: medico.endereco.rua,
+        cep: medico.endereco.rua,
+        bairro: medico.endereco.bairro,
+        numero: medico.endereco.numero
+      }]
+    });
     if(insertMedico) return true;
     return false;
   }

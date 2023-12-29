@@ -13,20 +13,20 @@ class CreateMedico {
     },idade,status,telefone}: IMedico = req.body;
 
     const medico: IMedico = {
-      nome,
-      CRM,
-      especialidade,
+      nome: nome.trim(),
+      CRM: CRM.trim(),
+      especialidade: especialidade.trim(),
       endereco:{
-        estado,
-        cidade,
-        rua,
-        cep,
-        bairro,
-        numero
+        estado: estado.trim(),
+        cidade: cidade.trim(),
+        rua: rua.trim(),
+        cep: cep.trim(),
+        bairro: bairro.trim(),
+        numero: numero.trim()
       },
       idade,
       status,
-      telefone
+      telefone: telefone.trim()
     }
 
     const medicoCreate = Medico.createNewMedico(medico);

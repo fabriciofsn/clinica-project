@@ -4,9 +4,7 @@ import { MedicoRepository } from "@modules/infra/db/medico/medico.repo";
 import { PacienteRepository } from "@modules/infra/db/paciente/paciente.repo";
 import { ConsultaMap } from "@shared/mappers/consulta.map";
 import { Request, Response } from "express";
-import { StatusCodes } from "http-status-codes";
 import { useCasesExceptions } from "../exception/usecase.exception";
-import { IConsulta, paymentMethod, paymentStatus, statusConsulta } from "@modules/consulta/consulta.interface";
 import { PacienteMap } from "@shared/mappers/paciente.map";
 import { IPaciente } from "@modules/domain/paciente/paciente.interface";
 import { MedicoMap } from "@shared/mappers/medico.map";
@@ -37,11 +35,11 @@ class AgendarConsulta{
       })
 
       const consultaMapper = ConsultaMap.toMongo(consulta);
-      console.log(consultaMapper)
+      
       const consultaAgendada = await new ConsultaRepository().insert(consultaMapper);
       res.status(200).json({consulta: consultaAgendada});
     }catch(e: any){
-      res.status(StatusCodes.GATEWAY_TIMEOUT).json({error: e.message});
+      res.status(404).json({error: e.message});
     }
   }
 }

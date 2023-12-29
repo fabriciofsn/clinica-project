@@ -101,7 +101,7 @@ export class ConsultaRepository implements IRespository<Consulta>{
         valor: consultas.valor,
         status_do_pagamento: resolveEnumFromMongo.fromMongoToPayment(consultas.status_do_pagamento),
         status_da_consulta: resolveEnumFromMongo.fromMongoToStatusConsulta(consultas.status_da_consulta),
-        metodo_do_pagamento: resolveEnumFromMongo.fromMongoToPaymentMethod(consultas.metodo_do_pagamento),
+        metodo_do_pagamento: consultas.metodo_do_pagamento as paymentMethod,
       }
       arr.push(consulta as Consulta);
       }
