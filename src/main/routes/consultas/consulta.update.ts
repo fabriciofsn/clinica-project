@@ -18,7 +18,7 @@ class UpdateConsulta {
     try{  
       const existPaciente = await new PacienteRepository().recoverByID(paciente);
       const existMedico = await new MedicoRepository().recoverByID(medico);
-
+    
       if(!existPaciente) throw new useCasesExceptions.PacienteInexistente();
       if(!existMedico) throw new useCasesExceptions.MedicoInexistente();
 

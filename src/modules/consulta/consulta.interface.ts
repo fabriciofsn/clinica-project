@@ -15,7 +15,8 @@ export enum paymentMethod {
 
 export enum statusConsulta {
   AGENDADA = 'AGENDADA',
-  CANCELADA = 'CANCELADA'
+  CANCELADA = 'CANCELADA',
+  PENDENTE = 'PENDENTE',
 }
 
 export interface IConsulta {

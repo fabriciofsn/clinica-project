@@ -6,7 +6,6 @@ class RecuperarTodasConsultas {
     
     try{
       const consultas = await new ConsultaRepository().recoverAll();
-      
       res.status(200).json({consultas: consultas});
     }catch(e: any){
       res.status(404).json({error: e.message});

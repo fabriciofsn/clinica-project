@@ -22,6 +22,7 @@ export class resolveEnumFromMongo{
   public static fromMongoToStatusConsulta(status: string): statusConsulta{
     if(status === 'AGENDADA') return statusConsulta.AGENDADA;
     if(status === 'CANCELADA') return statusConsulta.CANCELADA;
+    if(status === 'PENDENTE') return statusConsulta.PENDENTE;
 
     throw new Error('Status da consulta é inválido!');
   }

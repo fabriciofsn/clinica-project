@@ -17,12 +17,12 @@ class AgendarConsulta{
     try{ 
       const existPaciente = await new PacienteRepository().recoverByID(paciente);
       const existMedico = await new MedicoRepository().recoverByID(medico);
-
+  
       const pacienteMap = PacienteMap.toMongo(existPaciente as IPaciente);
       const medicoMap = MedicoMap.toMongo(existMedico as IMedico);
 
       if(!existPaciente) throw new useCasesExceptions.PacienteInexistente();
-      if(!existMedico) throw new useCasesExceptions.MedicoInexistente();
+      if(!existMedico) throw new useCasesExceptions.MedicoInexistente(); 
 
       const consulta: Consulta = Consulta.marcarConsulta({
         paciente: pacienteMap,
@@ -35,11 +35,11 @@ class AgendarConsulta{
       })
 
       const consultaMapper = ConsultaMap.toMongo(consulta);
-      
       const consultaAgendada = await new ConsultaRepository().insert(consultaMapper);
       res.status(200).json({consulta: consultaAgendada});
     }catch(e: any){
-      res.status(404).json({error: e.message});
+      console.error(e);
+      res.status(500).json({error: e.message});
     }
   }
 }

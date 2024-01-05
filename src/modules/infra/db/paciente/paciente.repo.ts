@@ -24,7 +24,7 @@ export class PacienteRepository implements IRespository<IPaciente>{
       idade: paciente.idade,
       telefone: paciente.telefone
       } 
-
+      
     return fromMongoToObject;  
     }
     return null;
