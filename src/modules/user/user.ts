@@ -7,11 +7,11 @@ export class User implements userRepository<User>{
 
   async login(email: string, password: string): Promise<string | boolean> {
     const user = await userDB.findOne({email:email});
-    if(!user) return false;
+    if(!user) throw new Error('User Not Found');
 
-     const passwordMatch = await compare(password, user.password);
+    const passwordMatch = await compare(password, user.password);
 
-    if(!passwordMatch) return false;
+    if(!passwordMatch) throw new Error('Incorrect Password');
 
     const token = AuthService.gererateToken({email: user.email});
     return token;
