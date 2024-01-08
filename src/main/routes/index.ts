@@ -40,3 +40,6 @@ router.put('/consulta/:id', AuthService.authenticateToken, consultaUpdate);
 router.get('/consulta/deletar/:id', AuthService.authenticateToken,deletarConsulta);
 
 router.post('/login', login);
+
+//Endereço API online 
+//https://apiclinica-brvy.onrender.com/
