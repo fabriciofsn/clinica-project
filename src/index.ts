@@ -174,7 +174,7 @@ databaseConnection();
 // findPaciente();
 
 async function register() {
-  const user = await new User().login('email@email.com', '123456');
+  const user = await new User().insert('hesnan@email.com', '123456');
   console.log(user);
 }
 
