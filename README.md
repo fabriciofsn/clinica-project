@@ -1,7 +1,7 @@
-# Sistema rodando em: 
+# Site running at:  
 ## https://home-clinic-web-app.vercel.app/
-# Para logar use: 
+# To login use: 
 ## Email: email@email.com
-## Senha: 123456
+## Password: 123456
 
-## O login pode levar até 1 minuto, pois a API está hospedada em um sistema de hospedagem gratuito
+## To sign in, it might be take a while because the API is hosted on a free hosting service. 
